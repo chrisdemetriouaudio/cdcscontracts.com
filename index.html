@@ -82,6 +82,7 @@ body{
   letter-spacing:.14em; text-transform:uppercase; color:var(--card-muted);
 }
 .f dd{margin:0; font-size:.87rem; line-height:1.4; font-weight:500}
+.f dd .fine{display:inline-block; margin-top:.15rem; font-size:.72rem; font-weight:500; color:var(--card-muted)}
 
 .chips{
   display:flex; flex-wrap:wrap; gap:.4rem;
@@ -94,10 +95,7 @@ body{
   padding:.44rem .55rem; border-radius:5px; line-height:1;
   display:inline-flex; align-items:center; gap:.4rem;
 }
-.chip::before{
-  content:""; width:4px; height:4px; border-radius:99px;
-  background:var(--accent); flex:none;
-}
+.chip span[aria-hidden]{font-size:.95rem; line-height:1}
 
 .actions{display:flex; flex-direction:column; gap:.55rem; padding:var(--sp)}
 .btn{
@@ -133,18 +131,46 @@ body{
   font-weight:500;
 }
 .note p{margin:0; font-size:.9rem; line-height:1.55; max-width:60ch}
-.steps{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:.55rem}
-.steps li{
-  display:grid; grid-template-columns:1.35rem 1fr; gap:.7rem;
-  font-size:.9rem; line-height:1.5; align-items:baseline;
-}
-.steps b{
-  font-family:"Azeret Mono",ui-monospace,monospace; font-size:.65rem;
-  color:var(--accent); font-weight:600;
-}
 .foot{
   width:100%; max-width:26rem; border-top:1px solid var(--page-rule); padding-top:.9rem;
 }
+
+/* ---------- qualifications / experience tabs ---------- */
+.tab-input{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+  clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+.tab-headers{display:flex; gap:.4rem; margin-bottom:.9rem}
+.tab-label{
+  font-family:"Azeret Mono",ui-monospace,monospace; font-size:.62rem; letter-spacing:.1em;
+  text-transform:uppercase; font-weight:700; padding:.55rem .85rem; border-radius:99px;
+  border:1px solid var(--page-rule); color:var(--page-muted); cursor:pointer; user-select:none;
+}
+.tab-input:checked + .tab-label{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+.tab-input:focus-visible + .tab-label{outline:3px solid var(--accent); outline-offset:2px}
+.tab-panel{display:none}
+#tab-help:checked ~ .tab-panels #panel-help{display:block}
+#tab-quals:checked ~ .tab-panels #panel-quals{display:block}
+#tab-exp:checked ~ .tab-panels #panel-exp{display:block}
+.qual-list{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:.5rem}
+.qual-list li{
+  font-size:.9rem; padding:.55rem .75rem; background:var(--ink); color:var(--paper);
+  border-radius:8px; font-weight:500;
+}
+.exp-since{
+  font-family:"Azeret Mono",ui-monospace,monospace; font-size:.62rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--page-muted); margin:0 0 .8rem;
+}
+.exp-role{margin-bottom:1rem}
+.exp-role:last-child{margin-bottom:0}
+.exp-title{margin:0 0 .25rem; font-size:.92rem; font-weight:700}
+.exp-role-name{font-weight:500; color:var(--page-muted)}
+.exp-tasks{margin:0; font-size:.87rem; line-height:1.55; color:var(--page-fg)}
+.soft-skills{
+  font-size:.9rem; line-height:1.6; margin-top:1.1rem; padding-top:1.1rem;
+  border-top:1px solid var(--page-rule); max-width:60ch;
+}
+.soft-skills .refs{color:var(--page-muted); font-size:.82rem; margin-top:.5rem}
 @media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
 </style>
 
@@ -168,15 +194,16 @@ body{
 
   <dl class="fields">
     <div class="f"><dt>Area</dt><dd>Stockport &amp; Greater Manchester</dd></div>
-    <div class="f"><dt>Rate</dt><dd>Day rate on request</dd></div>
-    <div class="f"><dt>Works with</dt><dd>Carpentry contractors, joinery, refurbishment &amp; fit-out</dd></div>
+    <div class="f"><dt>Rate</dt><dd>Day rate on request<br><span class="fine">Materials &amp; consumables at cost, not included</span></dd></div>
+    <div class="f"><dt>Best fit</dt><dd>Carpentry &amp; joinery contractors, refurb and fit-out firms</dd></div>
   </dl>
 
   <div class="chips">
-    <span class="chip">CSCS Green Card</span>
-    <span class="chip">CIS Registered</span>
-    <span class="chip">Own Transport</span>
-    <span class="chip">Own Tools &amp; PPE</span>
+    <span class="chip"><span aria-hidden="true">🪪</span>CSCS Green Card</span>
+    <span class="chip"><span aria-hidden="true">🏛️</span>CIS Registered Subcontractor</span>
+    <span class="chip"><span aria-hidden="true">🚗</span>Own Transport</span>
+    <span class="chip"><span aria-hidden="true">🛠️</span>Own Tools</span>
+    <span class="chip"><span aria-hidden="true">⛑️</span>Own PPE</span>
   </div>
 
   <div class="actions">
@@ -195,23 +222,51 @@ body{
 </main>
 
 <div class="notes">
-  <section class="note" id="availability">
-    <h2>Availability</h2>
-    <p>Available for day work and short-term contracts. I&rsquo;m on site during the day, so messages are picked up at breaks and in the evening &mdash; send the details and I&rsquo;ll come back to you the same night where I can.</p>
-  </section>
-
   <section class="note">
-    <h2>What happens when you get in touch</h2>
-    <ol class="steps">
-      <li><b>01</b><span>Send the job details &mdash; dates, site postcode and the support needed &mdash; using Request dates, or message on WhatsApp if that&rsquo;s easier.</span></li>
-      <li><b>02</b><span>I check the request at breaks and in the evening and come back with a confirmation, a proposed alternative date or rate, or a straight no.</span></li>
-      <li><b>03</b><span>Dates are only booked once I&rsquo;ve confirmed &mdash; you&rsquo;ll get an email with the details and a calendar file to add it.</span></li>
-    </ol>
-  </section>
-
-  <section class="note">
-    <h2>What I bring</h2>
-    <p>My own tools, including power tools, plus PPE. Consumables and materials aren&rsquo;t included in the day rate &mdash; supply them yourself, or I&rsquo;ll pick them up and invoice them separately at cost.</p>
+    <h2>Background</h2>
+    <p style="margin:0 0 .9rem">First career in film, music and IT, before moving onto site with my brother-in-law&rsquo;s building firm.</p>
+    <input type="radio" name="infotab" id="tab-help" class="tab-input" checked>
+    <input type="radio" name="infotab" id="tab-exp" class="tab-input">
+    <input type="radio" name="infotab" id="tab-quals" class="tab-input">
+    <div class="tab-headers">
+      <label for="tab-help" class="tab-label">What I Help With</label>
+      <label for="tab-exp" class="tab-label">Experience</label>
+      <label for="tab-quals" class="tab-label">Cards &amp; Qualifications</label>
+    </div>
+    <div class="tab-panels">
+      <div class="tab-panel" id="panel-help">
+        <ul class="qual-list">
+          <li>General labouring &amp; site support</li>
+          <li>Second-fix support for joiners &amp; carpenters</li>
+          <li>Strip-outs, rip-outs &amp; site clearance</li>
+          <li>Stud walls, boarding &amp; insulation fit</li>
+          <li>Decking &amp; substructure prep</li>
+          <li>Materials handling &amp; making good</li>
+        </ul>
+      </div>
+      <div class="tab-panel" id="panel-quals">
+        <ul class="qual-list">
+          <li>CSCS Green Card</li>
+          <li>C&amp;G Level 1 Multi Skills (Eve course starts Sep 2026)</li>
+          <li>C&amp;G Level 1 Carpentry (Eve course starts Jan 2027)</li>
+        </ul>
+      </div>
+      <div class="tab-panel" id="panel-exp">
+        <p class="exp-since">Experience since May 2026</p>
+        <div class="exp-role">
+          <p class="exp-title">Property Theory <span class="exp-role-name">&mdash; Skilled Labourer</span></p>
+          <p class="exp-tasks">Assisting with RSJ installs and acrow propping, stud walls and plasterboarding, insulation fit-out, strip-outs and site clearance, mixing bonding coat, knocking through and forming openings, breaking out block work with an SDS drill.</p>
+        </div>
+        <div class="exp-role">
+          <p class="exp-title">Caleb&rsquo;s Carpentry <span class="exp-role-name">&mdash; Carpentry Mate</span></p>
+          <p class="exp-tasks">Stripping out old decking, prepping the sub-frame, fitting noggins, laying deck boards, setting posts with Postcrete.</p>
+        </div>
+      </div>
+    </div>
+    <div class="soft-skills">
+      <p>On site: turns up ready to go, keeps pace without needing to be chased, and only needs telling once. What tradespeople notice most is the anticipation &mdash; the next board, mix or tool is already to hand before they ask for it. Fits in with site teams and clients from day one.</p>
+      <p class="refs">References available on request.</p>
+    </div>
   </section>
 </div>
 
