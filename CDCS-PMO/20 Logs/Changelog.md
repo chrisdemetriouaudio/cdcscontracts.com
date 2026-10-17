@@ -10,7 +10,14 @@ updated: 2026-10-17
 > **How to read:** tap a date to open it. Only the newest is open.
 > **Back to:** [[00 Dashboard]]
 
-> [!success]+ 🚀 17 Oct 2026 · Booking form errors fixed · live
+> [!success]+ 🚀 17 Oct 2026 · Invoice and card payment (test mode) · live
+> - **What changed:** each booking gets a private invoice link. It shows labour at the demo rate, minus 20% CIS, with a Pay button that opens Stripe Checkout.
+> - **Test mode only:** Stripe's test card 4242 pays; no real money moves.
+> - **Database:** backed up, then migration 0003 added the payment columns.
+> - **Released:** pull request #4 (`d3296bf`); Pages deployment `a5a4525e`; Labs `81efc43`.
+> - **Rollback:** Cloudflare dashboard → Pages → cdcs-booking → Deployments → `55d00e3e` → Rollback.
+
+> [!success]- 🚀 17 Oct 2026 · Booking form errors fixed · live
 > - **What changed:** when a field is missing, only that field turns red with its own message (it used to turn every field red). The red clears as you type.
 > - **Released:** pull request #3 (`69c0af6`); Pages deployment `55d00e3e`.
 

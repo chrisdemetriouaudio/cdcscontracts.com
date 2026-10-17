@@ -16,6 +16,7 @@ updated: 2026-10-17
 |---|---|---|
 | Website (cdcscontracts.com) | `index.html`, `CNAME` | GitHub Pages, from `main`, a minute after a push |
 | Booking system (book.cdcscontracts.com) | `booking/` | Cloudflare Pages project `cdcs-booking`, deployed with Wrangler |
+| Card payment | `booking/functions/invoice/`, `_lib/stripe.js` | Part of the booking deploy; Stripe **test mode** only |
 | Retry worker | `booking/retry-worker/` | Cloudflare Worker `cdcs-booking-retry`, every 15 minutes |
 | Quote Engine | `quote*.html` (6 drafts) | Not published |
 | Plan and rules | `docs/` | Not published |
@@ -23,7 +24,7 @@ updated: 2026-10-17
 
 ## 🔒 What never goes on GitHub
 
-- **`booking/.dev.vars`:** the local secrets (password hash, salt, e-mail key, home location).
+- **`booking/.dev.vars`:** the local secrets (password hash, salt, e-mail key, home location, Stripe test key).
 - **`.wrangler/`** folders: local caches.
 - `.gitignore` enforces both. `_config.yml` keeps everything except the landing page off the website.
 
@@ -32,3 +33,4 @@ updated: 2026-10-17
 - **The booking system** lives in the Cloudflare account **Resale-regroup-fax@duck.com's Account**. It's not the same account as Genesis/Labs or R.E.A.CH.
 - **Deploying it** (signed in to that account, kept separate from other logins): `cd booking && XDG_CONFIG_HOME="$HOME/.config/cdcs-cloudflare" npx wrangler pages deploy --project-name cdcs-booking --branch main`, then `npx wrangler deploy --config retry-worker/wrangler.toml`.
 - **The domain's DNS** (cdcscontracts.com) is on Cloudflare; **e-mail** (Zoho) is on the root domain.
+- **Database changes:** back up first (`npx wrangler d1 export cdcs-booking-db --remote --output <file>`), then `npx wrangler d1 migrations apply cdcs-booking-db --remote`. The migration tracker has been up to date since 17 Oct 2026 (0001–0003).

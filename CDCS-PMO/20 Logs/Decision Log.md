@@ -9,6 +9,11 @@ updated: 2026-10-17
 > **What:** what was decided, and why. One box per decision, newest first.
 > **Back to:** [[00 Dashboard]]
 
+> [!question]- 17 Oct 2026 · Card payment: invoice after the work, Stripe test mode
+> - **Decided:** pay an invoice by card, not pay up front. The invoice takes off 20% CIS, as a contractor would.
+> - **Decided:** Stripe in test mode only; the code refuses a live key.
+> - **Why:** it shows the whole flow, booking to paid, without taking real money for a demo business.
+
 > [!question]- 17 Oct 2026 · A generic brand: C D Construction Services
 > - **Decided:** no personal name or photo; "CD" stands for C D Construction Services.
 > - **Decided:** "WhatsApp me" stays as a label, without a link; contractors use Request dates or e-mail.
