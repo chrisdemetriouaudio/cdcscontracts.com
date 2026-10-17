@@ -10,6 +10,8 @@ database_id = "213a971a-e418-450a-a13a-a868e3b78555"
 
 [vars]
 APP_URL = "https://book.cdcscontracts.com"
+# Demo invoices: day rate used until a booking has an agreed rate (pence). A demo figure.
+DEMO_DAY_RATE_PENCE = "15000"
 OWNER_EMAIL = "chris@cdcscontracts.com"
 EMAIL_FROM = "CDCS Contracts <bookings@cdcscontracts.com>"
 EMAIL_REPLY_TO = "chris@cdcscontracts.com"

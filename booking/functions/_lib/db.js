@@ -50,6 +50,17 @@ export async function getBookingByAcceptTokenHash(db, hash) {
   ).bind(hash, nowIso()).first();
 }
 
+export async function getBookingByInvoiceTokenHash(db, hash) {
+  return db.prepare('SELECT * FROM bookings WHERE invoice_token_hash = ?').bind(hash).first();
+}
+
+/** Mark a booking paid once Stripe has confirmed it. Idempotent: the first record wins. */
+export async function markBookingPaid(db, id, { amountPence, paymentRef }) {
+  const res = await db.prepare('UPDATE bookings SET paid_at = ?, paid_amount_pence = ?, payment_ref = ?, updated_at = ? WHERE id = ? AND paid_at IS NULL')
+    .bind(nowIso(), amountPence, paymentRef, nowIso(), id).run();
+  return (res.meta?.changes || 0) > 0;
+}
+
 export async function getBookingByCalendarTokenHash(db, hash) {
   return db.prepare('SELECT * FROM bookings WHERE calendar_token_hash = ?').bind(hash).first();
 }

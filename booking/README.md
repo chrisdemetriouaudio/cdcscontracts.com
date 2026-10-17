@@ -81,6 +81,18 @@ npx wrangler pages secret put HOME_LON --project-name cdcs-booking
 ```
 Without them the distance check answers "not set up" (the rest of the booking form still works).
 
+### 6b. Card payment demo (Stripe, test mode only)
+Each booking gets a private invoice page (`/invoice/<token>`): labour at the demo day rate
+(`DEMO_DAY_RATE_PENCE` in `wrangler.toml`), less 20% CIS, and a Pay button that opens Stripe Checkout.
+The code refuses any key that isn't a test key (`sk_test_…`), so no real money can move.
+```
+npx wrangler pages secret put STRIPE_SECRET_KEY --project-name cdcs-booking
+# optional, for /api/stripe/webhook: STRIPE_WEBHOOK_SECRET (whsec_…)
+```
+Pay with Stripe's test card 4242 4242 4242 4242, any future expiry, any CVC.
+Without the key the invoice still shows, with "Online payment isn't switched on yet".
+The live database needs `migrations/0003_invoices.sql` applied before this is deployed.
+
 ### 6. Two more required secrets
 ```
 npx wrangler pages secret put IP_HASH_SALT --project-name cdcs-booking
