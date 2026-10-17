@@ -10,7 +10,11 @@ updated: 2026-10-17
 > **How to read:** tap a date to open it. Only the newest is open.
 > **Back to:** [[00 Dashboard]]
 
-> [!success]+ 🚀 17 Oct 2026 · Booking system redeployed · live
+> [!success]+ 🚀 17 Oct 2026 · Booking form errors fixed · live
+> - **What changed:** when a field is missing, only that field turns red with its own message (it used to turn every field red). The red clears as you type.
+> - **Released:** pull request #3 (`69c0af6`); Pages deployment `55d00e3e`.
+
+> [!success]- 🚀 17 Oct 2026 · Booking system redeployed · live
 > - **What changed:** book.cdcscontracts.com has the demo watermark and new wording, with no name, WhatsApp link or number.
 > - **Private home location:** the distance check now reads `HOME_LAT`/`HOME_LON` settings (checked: Manchester M1 = 9.1 miles).
 > - **Released:** Pages deployment `3970a843`; retry worker version `4fd5e6c7`.

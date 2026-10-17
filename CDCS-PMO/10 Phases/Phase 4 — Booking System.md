@@ -29,6 +29,7 @@ updated: 2026-10-17
 > - [x] **Admin dashboard** behind a password, with sign-out.
 > - [x] **Checked the live settings** (17 Oct 2026): password, salt, e-mail key and Turnstile are set; WhatsApp alerts are not.
 > - [x] **Home location now private settings** (`HOME_LAT`, `HOME_LON`); distance check works (17 Oct 2026).
+> - [x] **Fixed form errors:** only the missing field turns red, not all of them (PR #3, 17 Oct 2026).
 
 > [!abstract]- 🧠 What this phase taught (tap to open)
 > - Free tiers (Cloudflare, Resend) cover a one-person business with room to spare.
