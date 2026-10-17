@@ -43,7 +43,10 @@ textarea{min-height:5rem;resize:vertical}
   font-size:.85rem;margin-bottom:1rem}
 .msg{font-size:.85rem;color:var(--muted);margin-top:.5rem}
 .done{font-size:1rem}
-</style></head><body>
+/* Demo watermark: this whole site is a demonstration. It never blocks clicks. */
+body::after{content:"";position:fixed;inset:0;z-index:2147483647;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='380' height='230' viewBox='0 0 380 230'%3E%3Ctext x='190' y='125' text-anchor='middle' transform='rotate%28-24 190 115%29' font-family='Arial, Helvetica, sans-serif' font-weight='800' font-size='30' letter-spacing='3' fill='%23FEBD17' fill-opacity='0.16'%3ETHIS IS A DEMO%3C/text%3E%3C/svg%3E");background-repeat:repeat;background-size:380px 230px}
+.demo-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style></head><body><p class="demo-sr">This site is a demo.</p>
 <p class="eyebrow">CDCS Contracts &middot; Private link</p>
 ${bodyHtml}
 </body></html>`;
