@@ -16,8 +16,7 @@ export async function onRequestGet({ params, env }) {
   if (!booking) {
     return html(pageShell('Link expired', `<div class="panel">
       <h1>This link has expired or was already used</h1>
-      <p>If you're still waiting on dates, reply to the original email or message Chris on
-      WhatsApp: <a href="https://wa.me/447356003438">+44 7356 003438</a>.</p></div>`), 404);
+      <p>If you're still waiting on dates, reply to the original email.</p></div>`), 404);
   }
   if (booking.status !== 'proposed') {
     return html(pageShell('Already actioned', `<div class="panel">
@@ -44,8 +43,7 @@ export async function onRequestGet({ params, env }) {
         if these dates have just been taken, you'll see that here instead of a confirmation.</p>
         <div class="row"><button class="btn btn-accept" type="submit">Accept and confirm</button></div>
       </form>
-      <p class="msg">Not going to work? Reply to the original email or WhatsApp
-      <a href="https://wa.me/447356003438">+44 7356 003438</a> with reference ${esc(booking.ref)}.</p>
+      <p class="msg">Not going to work? Reply to the original email with reference ${esc(booking.ref)}.</p>
     </div>`;
   return html(pageShell(`Accept ${booking.ref}`, body));
 }

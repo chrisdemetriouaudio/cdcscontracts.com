@@ -152,15 +152,15 @@ details[open] > summary::before{content:"–"}
 
   <div id="success" class="success" role="status">
     <p class="eyebrow" style="color:#9A908C">Request sent</p>
-    <p style="margin:.3rem 0 0">Thanks — your request has been sent to Chris.</p>
+    <p style="margin:.3rem 0 0">Thanks — your request has been sent.</p>
     <p class="ref" id="successRef"></p>
     <p style="font-size:.88rem;color:#C7C1BC;max-width:26rem;margin:0 auto;">
-      These dates aren&rsquo;t confirmed yet. Chris picks up messages at breaks and in the
+      These dates aren&rsquo;t confirmed yet. I pick up messages at breaks and in the
       evening, and will come back with a yes, a proposed alternative, or a no. Quote this
       reference in any follow-up.</p>
     <div class="top-actions" style="margin-top:1.3rem;max-width:20rem;margin-left:auto;margin-right:auto;">
-      <a class="btn btn-secondary" href="https://wa.me/447356003438" target="_blank" rel="noopener noreferrer">
-        <span>Message Chris on WhatsApp</span></a>
+      <span class="btn btn-secondary">
+        <span>WhatsApp me</span></span>
     </div>
   </div>
 
@@ -175,7 +175,7 @@ details[open] > summary::before{content:"–"}
     <fieldset>
       <legend>When do you need me?</legend>
 
-      <div class="choices" role="radiogroup" aria-label="When do you need Chris">
+      <div class="choices" role="radiogroup" aria-label="When do you need me">
         <div class="choice"><input type="radio" name="req_mode" id="mode_date" value="date" checked>
           <label for="mode_date">Pick a date</label></div>
         <div class="choice"><input type="radio" name="req_mode" id="mode_flex" value="flexible">
@@ -301,8 +301,8 @@ details[open] > summary::before{content:"–"}
           <label>Materials and consumables</label>
           <div class="choices" role="radiogroup" aria-label="Materials and consumables">
             <div class="choice"><input type="radio" name="materials_arrangement" id="mat_1" value="supplied_on_site" checked><label for="mat_1">Supplied on site</label></div>
-            <div class="choice"><input type="radio" name="materials_arrangement" id="mat_2" value="collection_requested"><label for="mat_2">Chris to collect</label></div>
-            <div class="choice"><input type="radio" name="materials_arrangement" id="mat_3" value="discuss"><label for="mat_3">Discuss with Chris</label></div>
+            <div class="choice"><input type="radio" name="materials_arrangement" id="mat_2" value="collection_requested"><label for="mat_2">I&rsquo;ll collect</label></div>
+            <div class="choice"><input type="radio" name="materials_arrangement" id="mat_3" value="discuss"><label for="mat_3">Discuss with me</label></div>
           </div>
 
           <label for="po_reference">Job or purchase-order reference</label>
@@ -312,7 +312,7 @@ details[open] > summary::before{content:"–"}
     </fieldset>
 
     <div class="notice">Day rate agreed before confirmation. Materials and consumables are
-      extra — supplied on site, collected and invoiced at cost, or agreed with Chris. Your
+      extra — supplied on site, collected and invoiced at cost, or agreed with me. Your
       dates are only booked once confirmed.</div>
 
     <div id="turnstileBox"></div>
@@ -320,10 +320,9 @@ details[open] > summary::before{content:"–"}
     <div class="submit-row">
       <button type="submit" class="btn btn-primary" style="width:100%" id="submitBtn">Send booking request</button>
     </div>
-    <p class="hint" style="text-align:center;margin-top:.7rem">Prefer WhatsApp? <a href="https://wa.me/447356003438" style="color:var(--accent)">Message Chris directly</a>.</p>
   </form>
 
-  <p class="foot-note">CDCS Contracts &middot; Chris Demetriou &middot; Sole trader, CIS
+  <p class="foot-note">CDCS Contracts &middot; C D Construction Services &middot; Sole trader, CIS
     registered. Booking subcontract trade support — not an independent specialist carpentry
     service.</p>
 </div>
@@ -403,7 +402,7 @@ details[open] > summary::before{content:"–"}
       windowEndIso = data.windowEnd || null;
       renderPublicCalendar();
     }).catch(function(){
-      calGridEl.innerHTML = '<p class="hint" style="grid-column:1/-1">Could not load availability — you can still type a date and Chris will confirm it.</p>';
+      calGridEl.innerHTML = '<p class="hint" style="grid-column:1/-1">Could not load availability — you can still type a date and I&rsquo;ll confirm it.</p>';
     });
   }
 
@@ -552,7 +551,7 @@ details[open] > summary::before{content:"–"}
   });
   loadAvailability();
 
-  // Site postcode -> town + return mileage from Chris's base. Informational only -
+  // Site postcode -> town + return mileage from the home base. Informational only -
   // never blocks submission, matches "flag for review, don't auto-reject" out-of-area jobs.
   var postcodeInput = document.getElementById('site_postcode');
   var postcodeInfo = document.getElementById('postcodeInfo');

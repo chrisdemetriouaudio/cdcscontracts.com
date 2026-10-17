@@ -1,7 +1,7 @@
 // Home base: kept private. HOME_LAT / HOME_LON are Cloudflare secrets (and in the local,
-// never-committed .dev.vars), so this public code never shows where Chris lives.
+// never-committed .dev.vars), so this public code never shows the home base.
 // Only the computed distance is ever sent to the client.
-const FREE_RADIUS_MILES = 15; // one-way; beyond this, Chris may add a small travel contribution
+const FREE_RADIUS_MILES = 15; // one-way; beyond this, a small travel contribution may be added
 
 function haversineMiles(lat1, lon1, lat2, lon2) {
   const R = 3958.8;
