@@ -27,6 +27,7 @@ export async function approveBooking(env, db, booking, { startDate, endDate, sta
   }
 
   const calendarToken = generateToken();
+  const invoiceToken = generateToken(); // a fresh invoice link for the confirmed terms
   const changed = await updateBookingIfStatus(db, booking.id, booking.status, {
     status: 'confirmed',
     confirmed_start_date: startDate,
@@ -35,6 +36,7 @@ export async function approveBooking(env, db, booking, { startDate, endDate, sta
     day_rate_pence: dayRate ? Math.round(Number(dayRate) * 100) : null,
     agreed_hours: (agreedHours || '').trim() || null,
     calendar_token_hash: await hashToken(calendarToken),
+    invoice_token_hash: await hashToken(invoiceToken),
   });
   if (!changed) return { ok: false, error: `Reference ${booking.ref} was already actioned elsewhere.` };
 
@@ -46,7 +48,8 @@ export async function approveBooking(env, db, booking, { startDate, endDate, sta
     row('Day rate', dayRate ? `£${Number(dayRate).toFixed(2)}` : 'To be confirmed on site'),
     row('Materials', MATERIALS[booking.materials_arrangement]),
   ];
-  const content = contractorConfirmedEmail({ ref: booking.ref, summaryRows, icsUrl });
+  const invoiceUrl = `${appUrl}/invoice/${invoiceToken}`;
+  const content = contractorConfirmedEmail({ ref: booking.ref, summaryRows, icsUrl, invoiceUrl });
   await sendAndLog(env, db, {
     bookingId: booking.id, channel: 'email_contractor_confirmed',
     payload: { to: booking.contact_email, subject: `Confirmed — ${booking.ref}`, ...content },

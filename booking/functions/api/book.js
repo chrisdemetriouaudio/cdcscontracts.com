@@ -48,6 +48,7 @@ export async function onRequestPost({ request, env }) {
   const ref = await generateUniqueRef(db, value.company_name || value.contact_name);
   const reviewToken = generateToken();
   const reviewTokenHash = await hashToken(reviewToken);
+  const invoiceToken = generateToken(); // demo invoice + Stripe test-mode payment
   const now = nowIso();
 
   const booking = {
@@ -57,6 +58,7 @@ export async function onRequestPost({ request, env }) {
     req_end_date: value.req_end_date,
     req_specific_dates: null,
     review_token_hash: reviewTokenHash,
+    invoice_token_hash: await hashToken(invoiceToken),
     review_token_expires: new Date(Date.now() + REVIEW_TOKEN_TTL_MS).toISOString(),
     ip_hash: ipHash,
   };
@@ -118,7 +120,7 @@ export async function onRequestPost({ request, env }) {
     });
   }
 
-  return json({ ok: true, ref });
+  return json({ ok: true, ref, invoiceUrl: `${env.APP_URL}/invoice/${invoiceToken}` });
 }
 
 // Base is name-derived (e.g. CDCS-260907-ACME); on a same-day collision from

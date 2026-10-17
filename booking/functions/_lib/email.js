@@ -105,15 +105,16 @@ export function contractorAcceptEmail({ ref, acceptUrl, summaryRows, message }) 
   return { html, text };
 }
 
-export function contractorConfirmedEmail({ ref, summaryRows, icsUrl }) {
+export function contractorConfirmedEmail({ ref, summaryRows, icsUrl, invoiceUrl }) {
   const html = shell('Booking confirmed', `
     <p><strong>Confirmed</strong> &mdash; reference <strong>${ref}</strong>.</p>
     ${summaryTable(summaryRows)}
     <div style="margin-top:18px;">${button('Add to calendar', icsUrl)}</div>
+    ${invoiceUrl ? `<div style="margin-top:10px;">${button('View invoice and pay (demo)', invoiceUrl)}</div>` : ''}
     <p style="font-size:13px;color:${MUTED};margin-top:16px;">
       Need to change or cancel? Reply to this email with reference ${ref}.</p>
   `);
-  const text = `Booking confirmed - reference ${ref}. Add to calendar: ${icsUrl}`;
+  const text = `Booking confirmed - reference ${ref}. Add to calendar: ${icsUrl}${invoiceUrl ? `\nInvoice (demo): ${invoiceUrl}` : ''}`;
   return { html, text };
 }
 
