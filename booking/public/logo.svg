@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" role="img" aria-labelledby="title desc">
+  <title id="title">CDCS Contracts logo</title>
+  <desc id="desc">Stacked white CDCS Contracts wordmark with a yellow underline.</desc>
+
+  <g fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="260" y="142" font-size="126" font-weight="800" letter-spacing="9">CDCS</text>
+    <text x="260" y="218" font-size="48" font-weight="700" letter-spacing="5">CONTRACTS</text>
+  </g>
+
+  <rect x="76" y="242" width="368" height="14" rx="7" fill="#FEBD17"/>
+</svg>

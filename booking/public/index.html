@@ -1,0 +1,697 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Request day work or short-term trade support from CDCS Contracts — Stockport &amp; Greater Manchester.">
+<title>Request dates &middot; CDCS Contracts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Azeret+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ink:#2B282A; --paper:#ECEBEA; --accent:#FEBD17; --muted:#6E6663;
+  --bg:#DCD8D2; --fg:#2B282A; --rule:#C4BFB8; --card-rule:#4A4344;
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#1A1819; --fg:#ECEBEA; --rule:#332F30; --muted:#8E8683;}
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:Archivo,"Helvetica Neue",Arial,sans-serif; -webkit-font-smoothing:antialiased;
+  padding:clamp(1rem,5vw,2.5rem) 1rem clamp(3rem,8vw,5rem);
+  display:flex; flex-direction:column; align-items:center; gap:1.5rem;
+}
+.wrap{width:100%; max-width:34rem; display:flex; flex-direction:column; gap:1.5rem}
+.eyebrow{
+  font-family:"Azeret Mono",monospace; font-size:.62rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--muted); text-align:center; margin:0;
+}
+h1{font-size:1.55rem; line-height:1.2; margin:.3rem 0 0; text-wrap:balance; text-align:center}
+.lede{font-size:.95rem; line-height:1.5; color:var(--muted); text-align:center; margin:.5rem 0 0; max-width:32rem}
+.top-actions{display:flex; flex-direction:column; gap:.6rem; margin-top:.4rem}
+.btn{
+  display:flex; align-items:center; justify-content:center; gap:.55rem; min-height:52px;
+  padding:.8rem 1.1rem; border-radius:9px; font-size:.95rem; font-weight:700;
+  text-decoration:none; border:1px solid transparent; cursor:pointer;
+}
+.btn-primary{background:var(--accent); color:#231F20}
+.btn-secondary{background:transparent; color:var(--fg); border-color:var(--rule)}
+.btn:focus-visible{outline:3px solid var(--accent); outline-offset:2px}
+
+form{background:var(--ink); color:var(--paper); border-radius:16px; padding:1.4rem 1.3rem 1.6rem;
+  display:flex; flex-direction:column; gap:0}
+fieldset{border:0; margin:0; padding:1.1rem 0; border-top:1px solid var(--card-rule)}
+fieldset:first-of-type{border-top:0; padding-top:0}
+legend{
+  font-family:"Azeret Mono",monospace; font-size:.62rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--accent); font-weight:700; padding:0 0 .7rem; width:100%;
+}
+label{display:block; font-size:.85rem; font-weight:600; margin:.7rem 0 .35rem}
+label.req::after{content:" *"; color:var(--accent)}
+.hint{font-size:.76rem; color:#9A908C; margin:-.2rem 0 .5rem}
+.postcode-row{display:flex; align-items:center; gap:.6rem; flex-wrap:wrap}
+.postcode-row input{flex:1 1 10rem; min-width:8rem}
+.postcode-info{font-size:.78rem; color:#C7C1BC; white-space:nowrap}
+.postcode-info.far{color:var(--accent)}
+.back-home{
+  display:inline-flex; align-items:center; gap:.55rem; align-self:flex-start;
+  text-decoration:none; background:var(--ink); color:var(--paper);
+  padding:.45rem .9rem .45rem .6rem; border-radius:99px; font-size:.78rem; font-weight:600;
+}
+.back-home:hover{opacity:.85}
+.back-home:focus-visible{outline:3px solid var(--accent); outline-offset:2px}
+.back-home img{display:block; height:16px; width:auto}
+input[type=text], input[type=date], input[type=time], input[type=email], input[type=tel],
+input[type=number], textarea, select{
+  width:100%; font:inherit; font-size:.95rem; padding:.75rem .8rem; border-radius:9px;
+  border:1px solid #4A4344; background:#3E393A; color:var(--paper);
+}
+input::placeholder, textarea::placeholder{color:#9A908C}
+textarea{min-height:4.5rem; resize:vertical}
+.choices{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.4rem}
+.choice{position:relative}
+.choice input{position:absolute; opacity:0; width:1px; height:1px}
+.choice label{
+  margin:0; display:flex; align-items:center; min-height:44px; padding:.55rem 1rem;
+  border-radius:99px; border:1px solid #4A4344; font-size:.85rem; font-weight:600;
+  cursor:pointer; background:#3E393A; color:var(--paper);
+}
+.choice input:checked + label{background:var(--accent); border-color:var(--accent); color:#231F20}
+.choice input:focus-visible + label{outline:3px solid var(--accent); outline-offset:2px}
+.row2{display:grid; grid-template-columns:1fr; gap:.9rem}
+@media(min-width:26rem){.row2{grid-template-columns:1fr 1fr}}
+.checkline{display:flex; align-items:center; gap:.55rem; margin-top:.6rem; font-size:.85rem}
+.checkline input{width:1.15rem; height:1.15rem}
+.mini-cal{background:#3E393A; border-radius:9px; padding:.7rem; margin-top:.3rem}
+.mini-cal-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:.4rem}
+.mini-cal-head span{font-weight:700; font-size:.85rem}
+.mini-cal-nav{
+  min-width:36px; min-height:36px; border-radius:7px; border:1px solid #4A4344;
+  background:transparent; color:var(--paper); font-size:1rem; cursor:pointer;
+}
+.mini-cal-nav:disabled{opacity:.35; cursor:default}
+.mini-cal-weekdays{display:grid; grid-template-columns:repeat(7,1fr); gap:3px; margin-bottom:3px}
+.mini-cal-weekdays span{
+  text-align:center; font-family:"Azeret Mono",monospace; font-size:.56rem;
+  letter-spacing:.06em; text-transform:uppercase; color:#9A908C;
+}
+.mini-cal-grid{display:grid; grid-template-columns:repeat(7,1fr); gap:3px}
+.cal-cell{
+  aspect-ratio:1; display:flex; align-items:center; justify-content:center;
+  font-size:.8rem; border-radius:6px; background:#2B282A; color:var(--paper);
+  border:1px solid transparent; cursor:pointer; min-height:2.2rem;
+}
+.cal-cell:hover:not(.unavailable):not(.pad){border-color:var(--accent)}
+.cal-cell.unavailable{color:#6E6663; text-decoration:line-through; cursor:default; background:#231F20}
+.cal-cell.pad{background:transparent; cursor:default}
+.cal-cell.selected{background:var(--accent); color:#231F20; font-weight:700}
+.cal-cell:focus-visible{outline:3px solid var(--accent); outline-offset:2px}
+details{margin-top:.2rem}
+details > summary{
+  cursor:pointer; font-size:.85rem; font-weight:700; color:var(--accent); list-style:none;
+  display:flex; align-items:center; gap:.4rem; padding:.3rem 0;
+}
+details > summary::-webkit-details-marker{display:none}
+details > summary::before{content:"+"; font-size:1.1rem}
+details[open] > summary::before{content:"–"}
+.notice{
+  background:rgba(254,189,23,.12); border:1px solid var(--accent); border-radius:9px;
+  padding:.85rem 1rem; font-size:.82rem; line-height:1.5; margin:1.1rem 0;
+}
+.err{color:#FF9C8F; font-size:.78rem; margin-top:.3rem; display:none}
+.field-error input, .field-error textarea, .field-error select{border-color:#FF6B5B}
+.field-error .err{display:block}
+.submit-row{margin-top:.4rem}
+.formerr{
+  background:#3E2223; border:1px solid #FF6B5B; color:#FFD9D3; padding:.8rem 1rem;
+  border-radius:9px; font-size:.85rem; margin-bottom:1rem; display:none;
+}
+.honeypot{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden}
+.success{
+  background:var(--ink); color:var(--paper); border-radius:16px; padding:2rem 1.5rem;
+  text-align:center; display:none;
+}
+.success .ref{font-family:"Azeret Mono",monospace; font-size:1.4rem; font-weight:700;
+  color:var(--accent); margin:.6rem 0 1rem; letter-spacing:.03em}
+.foot-note{font-size:.78rem; color:var(--muted); text-align:center; max-width:32rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
+</style></head><body>
+
+<div class="wrap">
+  <a class="back-home" href="https://cdcscontracts.com/">
+    <img src="/logo.svg" alt="" width="28" height="16">
+    <span>Back to cdcscontracts.com</span>
+  </a>
+
+  <div>
+    <p class="eyebrow">CDCS Contracts &middot; Stockport &amp; Greater Manchester</p>
+    <h1>Need an extra pair of hands on site?</h1>
+    <p class="lede">Request day work or short-term trade support in Stockport and Greater
+      Manchester. Send the job details and I&rsquo;ll check the dates and come back to you.</p>
+  </div>
+
+  <div id="success" class="success" role="status">
+    <p class="eyebrow" style="color:#9A908C">Request sent</p>
+    <p style="margin:.3rem 0 0">Thanks — your request has been sent to Chris.</p>
+    <p class="ref" id="successRef"></p>
+    <p style="font-size:.88rem;color:#C7C1BC;max-width:26rem;margin:0 auto;">
+      These dates aren&rsquo;t confirmed yet. Chris picks up messages at breaks and in the
+      evening, and will come back with a yes, a proposed alternative, or a no. Quote this
+      reference in any follow-up.</p>
+    <div class="top-actions" style="margin-top:1.3rem;max-width:20rem;margin-left:auto;margin-right:auto;">
+      <a class="btn btn-secondary" href="https://wa.me/447356003438" target="_blank" rel="noopener noreferrer">
+        <span>Message Chris on WhatsApp</span></a>
+    </div>
+  </div>
+
+  <form id="bookingForm" novalidate>
+    <div class="formerr" id="formErr"></div>
+
+    <div class="honeypot" aria-hidden="true">
+      <label for="website">Leave this field blank</label>
+      <input type="text" id="website" name="website_hp" tabindex="-1" autocomplete="off">
+    </div>
+
+    <fieldset>
+      <legend>When do you need me?</legend>
+
+      <div class="choices" role="radiogroup" aria-label="When do you need Chris">
+        <div class="choice"><input type="radio" name="req_mode" id="mode_date" value="date" checked>
+          <label for="mode_date">Pick a date</label></div>
+        <div class="choice"><input type="radio" name="req_mode" id="mode_flex" value="flexible">
+          <label for="mode_flex">Dates flexible</label></div>
+        <div class="choice"><input type="radio" name="req_mode" id="mode_asap" value="asap">
+          <label for="mode_asap">As soon as possible</label></div>
+      </div>
+
+      <div id="startDateWrap">
+        <label class="req">Preferred start date</label>
+        <div class="mini-cal">
+          <div class="mini-cal-head">
+            <button type="button" class="mini-cal-nav" id="calPrev" aria-label="Previous month">‹</button>
+            <span id="calMonthLabel"></span>
+            <button type="button" class="mini-cal-nav" id="calNext" aria-label="Next month">›</button>
+          </div>
+          <div class="mini-cal-weekdays">
+            <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+          </div>
+          <div class="mini-cal-grid" id="calGridPublic"><p class="hint">Loading availability…</p></div>
+        </div>
+        <input type="hidden" id="req_start_date" name="req_start_date">
+        <p class="hint" id="calSelectedLabel" style="margin-top:.5rem">No date selected yet — tap an available day above.</p>
+        <div class="err">Choose an available start date.</div>
+      </div>
+
+      <label class="req">Duration</label>
+      <div class="choices" role="radiogroup" aria-label="Duration">
+        <div class="choice"><input type="radio" name="req_duration" id="dur_1" value="1_day" checked><label for="dur_1">1 day</label></div>
+        <div class="choice"><input type="radio" name="req_duration" id="dur_2" value="few_days"><label for="dur_2">A few days</label></div>
+        <div class="choice"><input type="radio" name="req_duration" id="dur_3" value="1_week"><label for="dur_3">1 week</label></div>
+        <div class="choice"><input type="radio" name="req_duration" id="dur_4" value="longer"><label for="dur_4">Longer</label></div>
+        <div class="choice"><input type="radio" name="req_duration" id="dur_5" value="not_sure"><label for="dur_5">Not sure</label></div>
+      </div>
+      <div class="err" id="durErr">Choose a duration.</div>
+
+      <div id="multiDayWrap" style="display:none">
+        <label class="checkline" for="weekends">
+          <input type="checkbox" id="weekends" name="req_weekends_included">
+          <span>Weekends are OK / included</span>
+        </label>
+        <p class="hint" id="rangeHint" style="margin-top:.4rem">Tap a date above to start a range, then tap another date to set the end. Tap the same date again to clear it.</p>
+      </div>
+      <input type="hidden" id="req_end_date" name="req_end_date">
+
+      <label class="checkline" for="tba" style="margin-top:1rem">
+        <input type="checkbox" id="tba" name="tba_checkbox" checked>
+        <span>Start time to be agreed</span>
+      </label>
+      <div id="startTimeWrap" style="display:none">
+        <label for="req_start_time">Start time</label>
+        <input type="time" id="req_start_time" name="req_start_time" value="07:30">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Where and what&rsquo;s the work?</legend>
+
+      <label class="req" for="site_postcode">Site postcode</label>
+      <div class="postcode-row">
+        <input type="text" id="site_postcode" name="site_postcode" autocomplete="postal-code"
+          placeholder="e.g. SK1 3XZ" maxlength="12" required>
+        <span class="postcode-info" id="postcodeInfo" aria-live="polite"></span>
+      </div>
+      <div class="err">Enter the site postcode.</div>
+
+      <label for="site_address">Site address (optional)</label>
+      <textarea id="site_address" name="site_address" placeholder="Street, town — helps with access/parking"></textarea>
+
+      <label class="req">Type of support</label>
+      <div class="choices" role="radiogroup" aria-label="Type of support">
+        <div class="choice"><input type="radio" name="support_type" id="st_1" value="carpenter_mate" checked><label for="st_1">Carpenter&rsquo;s mate / carpentry support</label></div>
+        <div class="choice"><input type="radio" name="support_type" id="st_2" value="joinery"><label for="st_2">Joinery support</label></div>
+        <div class="choice"><input type="radio" name="support_type" id="st_3" value="refurb"><label for="st_3">Refurbishment support</label></div>
+        <div class="choice"><input type="radio" name="support_type" id="st_4" value="fitout"><label for="st_4">Fit-out support</label></div>
+        <div class="choice"><input type="radio" name="support_type" id="st_5" value="other"><label for="st_5">Other / let&rsquo;s discuss</label></div>
+      </div>
+
+      <label class="req" for="work_description">Short work description</label>
+      <textarea id="work_description" name="work_description" required
+        placeholder="e.g. Supporting the joiner on a shop fit-out, Monday to Wednesday."></textarea>
+      <div class="err">Add a short description of the job.</div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Your details</legend>
+      <div class="row2">
+        <div>
+          <label class="req" for="contact_name">Contact name</label>
+          <input type="text" id="contact_name" name="contact_name" autocomplete="name" required>
+          <div class="err">Enter your name.</div>
+        </div>
+        <div>
+          <label for="company_name">Company / trading name</label>
+          <input type="text" id="company_name" name="company_name" autocomplete="organization">
+        </div>
+      </div>
+      <div class="row2">
+        <div>
+          <label class="req" for="contact_email">Email</label>
+          <input type="email" id="contact_email" name="contact_email" autocomplete="email" required>
+          <div class="err">Enter a valid email address.</div>
+        </div>
+        <div>
+          <label class="req" for="contact_mobile">Mobile number</label>
+          <input type="tel" id="contact_mobile" name="contact_mobile" autocomplete="tel" required>
+          <div class="err">Enter a valid mobile number.</div>
+        </div>
+      </div>
+
+      <details style="margin-top:1rem">
+        <summary>Add site details (optional)</summary>
+        <div style="margin-top:.6rem">
+          <label for="site_contact">Site contact, if different</label>
+          <input type="text" id="site_contact" name="site_contact">
+
+          <label for="access_details">Access, parking &amp; induction details</label>
+          <textarea id="access_details" name="access_details"></textarea>
+
+          <label for="tools_ppe_needed">Specific tools or PPE needed</label>
+          <input type="text" id="tools_ppe_needed" name="tools_ppe_needed">
+
+          <label>Materials and consumables</label>
+          <div class="choices" role="radiogroup" aria-label="Materials and consumables">
+            <div class="choice"><input type="radio" name="materials_arrangement" id="mat_1" value="supplied_on_site" checked><label for="mat_1">Supplied on site</label></div>
+            <div class="choice"><input type="radio" name="materials_arrangement" id="mat_2" value="collection_requested"><label for="mat_2">Chris to collect</label></div>
+            <div class="choice"><input type="radio" name="materials_arrangement" id="mat_3" value="discuss"><label for="mat_3">Discuss with Chris</label></div>
+          </div>
+
+          <label for="po_reference">Job or purchase-order reference</label>
+          <input type="text" id="po_reference" name="po_reference">
+        </div>
+      </details>
+    </fieldset>
+
+    <div class="notice">Day rate agreed before confirmation. Materials and consumables are
+      extra — supplied on site, collected and invoiced at cost, or agreed with Chris. Your
+      dates are only booked once confirmed.</div>
+
+    <div id="turnstileBox"></div>
+
+    <div class="submit-row">
+      <button type="submit" class="btn btn-primary" style="width:100%" id="submitBtn">Send booking request</button>
+    </div>
+    <p class="hint" style="text-align:center;margin-top:.7rem">Prefer WhatsApp? <a href="https://wa.me/447356003438" style="color:var(--accent)">Message Chris directly</a>.</p>
+  </form>
+
+  <p class="foot-note">CDCS Contracts &middot; Chris Demetriou &middot; Sole trader, CIS
+    registered. Booking subcontract trade support — not an independent specialist carpentry
+    service.</p>
+</div>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+(function(){
+  var form = document.getElementById('bookingForm');
+  var successEl = document.getElementById('success');
+  var formErrEl = document.getElementById('formErr');
+  var submitBtn = document.getElementById('submitBtn');
+  var idKey = null;
+  var turnstileWidgetId = null;
+
+  function newIdempotencyKey(){
+    idKey = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random());
+  }
+  newIdempotencyKey();
+
+  // Remember contact details in this browser only, so a returning contractor on
+  // the same device doesn't have to retype them — no account or login involved.
+  var REMEMBER_KEY = 'cdcs_booking_contact_v1';
+  var REMEMBER_FIELDS = ['contact_name', 'company_name', 'contact_email', 'contact_mobile'];
+  function recallContactDetails(){
+    try {
+      var saved = JSON.parse(localStorage.getItem(REMEMBER_KEY) || 'null');
+      if (!saved) return;
+      REMEMBER_FIELDS.forEach(function(name){
+        var el = form.querySelector('[name=' + name + ']');
+        if (el && saved[name] && !el.value) el.value = saved[name];
+      });
+    } catch (e) { /* localStorage unavailable (private mode etc.) - just skip */ }
+  }
+  function rememberContactDetails(){
+    try {
+      var data = {};
+      REMEMBER_FIELDS.forEach(function(name){
+        var el = form.querySelector('[name=' + name + ']');
+        if (el) data[name] = el.value;
+      });
+      localStorage.setItem(REMEMBER_KEY, JSON.stringify(data));
+    } catch (e) { /* ignore - convenience feature only */ }
+  }
+  recallContactDetails();
+
+  // Show/hide start date vs flexible/ASAP
+  var modeRadios = form.querySelectorAll('input[name=req_mode]');
+  var startDateWrap = document.getElementById('startDateWrap');
+  function syncMode(){
+    var v = form.querySelector('input[name=req_mode]:checked').value;
+    startDateWrap.style.display = (v === 'date') ? '' : 'none';
+  }
+  modeRadios.forEach(function(r){ r.addEventListener('change', syncMode); });
+  syncMode();
+
+  // Click-to-pick availability calendar. Sundays and any already-booked/blocked
+  // days come from a public, privacy-safe endpoint (dates only, never who/why).
+  var todayIso = new Date().toISOString().slice(0, 10);
+  var unavailableSet = {};
+  var windowEndIso = null;
+  var calViewYear = new Date().getFullYear();
+  var calViewMonth = new Date().getMonth();
+  var calGridEl = document.getElementById('calGridPublic');
+  var calMonthLabel = document.getElementById('calMonthLabel');
+  var calPrevBtn = document.getElementById('calPrev');
+  var calNextBtn = document.getElementById('calNext');
+  var hiddenDateInput = document.getElementById('req_start_date');
+  var hiddenEndInput = document.getElementById('req_end_date');
+  var calSelectedLabel = document.getElementById('calSelectedLabel');
+  var weekendsCheckbox = document.getElementById('weekends');
+  var selStart = null;
+  var selEnd = null;
+
+  function loadAvailability(){
+    fetch('/api/availability').then(function(r){ return r.json(); }).then(function(data){
+      (data.unavailableDates || []).forEach(function(d){ unavailableSet[d] = true; });
+      windowEndIso = data.windowEnd || null;
+      renderPublicCalendar();
+    }).catch(function(){
+      calGridEl.innerHTML = '<p class="hint" style="grid-column:1/-1">Could not load availability — you can still type a date and Chris will confirm it.</p>';
+    });
+  }
+
+  function isoDate(y, m, d){
+    return y + '-' + String(m + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+  }
+  function addDays(iso, n){
+    var d = new Date(iso + 'T00:00:00Z');
+    d.setUTCDate(d.getUTCDate() + n);
+    return d.toISOString().slice(0, 10);
+  }
+  function weekdayOf(iso){
+    return new Date(iso + 'T00:00:00Z').getUTCDay(); // 0 = Sunday, 6 = Saturday
+  }
+  function currentDuration(){
+    var checked = form.querySelector('input[name=req_duration]:checked');
+    return checked ? checked.value : '1_day';
+  }
+  function fmtLong(iso){
+    return new Date(iso + 'T12:00:00Z').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+  }
+
+  // 1 week = 5 working days by default (Mon-Fri equivalent), 6 if weekends are OK -
+  // walking forward from the clicked date and skipping Sundays (always) and
+  // Saturdays (unless weekends are OK) or any day that's already unavailable.
+  function computeWeekEnd(startIso, weekendsOk){
+    var needed = weekendsOk ? 6 : 5;
+    var collected = 0;
+    var cursor = startIso;
+    var lastGood = startIso;
+    for (var guard = 0; guard < 30 && collected < needed; guard++) {
+      if (cursor >= todayIso && !unavailableSet[cursor] && (weekendsOk || weekdayOf(cursor) !== 6)) {
+        collected++;
+        lastGood = cursor;
+      }
+      cursor = addDays(cursor, 1);
+    }
+    return lastGood;
+  }
+
+  function clearSelection(){
+    selStart = null; selEnd = null;
+    hiddenDateInput.value = ''; hiddenEndInput.value = '';
+    calSelectedLabel.textContent = 'No date selected yet — tap an available day above.';
+  }
+
+  function updateSelectionLabel(){
+    if (!selStart) { calSelectedLabel.textContent = 'No date selected yet — tap an available day above.'; return; }
+    if (!selEnd || selEnd === selStart) { calSelectedLabel.textContent = 'Selected: ' + fmtLong(selStart); return; }
+    calSelectedLabel.textContent = 'Selected: ' + fmtLong(selStart) + ' – ' + fmtLong(selEnd);
+  }
+
+  function handleDateClick(iso){
+    var duration = currentDuration();
+    if (duration === '1_day') {
+      if (iso === selStart && iso === selEnd) { clearSelection(); }
+      else { selStart = iso; selEnd = iso; }
+    } else if (duration === '1_week') {
+      if (iso === selStart) { clearSelection(); }
+      else { selStart = iso; selEnd = computeWeekEnd(iso, weekendsCheckbox.checked); }
+    } else {
+      if (!selStart) { selStart = iso; selEnd = iso; }
+      else if (selStart === selEnd) {
+        if (iso === selStart) { clearSelection(); }
+        else if (iso < selStart) { selEnd = selStart; selStart = iso; }
+        else { selEnd = iso; }
+      } else {
+        selStart = iso; selEnd = iso;
+      }
+    }
+    hiddenDateInput.value = selStart || '';
+    hiddenEndInput.value = (selEnd && selEnd !== selStart) ? selEnd : '';
+    updateSelectionLabel();
+    setFieldError(hiddenDateInput, false);
+    renderPublicCalendar();
+  }
+
+  function isInSelection(iso){
+    if (!selStart) return false;
+    if (iso < selStart || iso > (selEnd || selStart)) return false;
+    if (currentDuration() === '1_week' && !weekendsCheckbox.checked && weekdayOf(iso) === 6) return false;
+    return true;
+  }
+
+  function renderPublicCalendar(){
+    var y = calViewYear, m = calViewMonth;
+    calMonthLabel.textContent = new Date(y, m, 1).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+    var first = new Date(y, m, 1);
+    var startPad = (first.getDay() + 6) % 7; // Monday-first
+    var daysInMonth = new Date(y, m + 1, 0).getDate();
+
+    var thisMonthStart = new Date(y, m, 1).toISOString().slice(0, 10);
+    var todayMonthStart = todayIso.slice(0, 8) + '01';
+    calPrevBtn.disabled = thisMonthStart <= todayMonthStart;
+    var nextMonthStart = new Date(y, m + 1, 1).toISOString().slice(0, 10);
+    calNextBtn.disabled = !!(windowEndIso && nextMonthStart > windowEndIso);
+
+    var html = '';
+    for (var i = 0; i < startPad; i++) html += '<div class="cal-cell pad"></div>';
+    for (var d = 1; d <= daysInMonth; d++) {
+      var iso = isoDate(y, m, d);
+      var isPast = iso < todayIso;
+      var isUnavailable = isPast || !!unavailableSet[iso];
+      var selected = (!isUnavailable && isInSelection(iso)) ? ' selected' : '';
+      if (isUnavailable) {
+        html += '<div class="cal-cell unavailable" aria-label="' + iso + ' not available">' + d + '</div>';
+      } else {
+        html += '<button type="button" class="cal-cell' + selected + '" data-date="' + iso + '" aria-label="' + iso + '">' + d + '</button>';
+      }
+    }
+    calGridEl.innerHTML = html;
+    calGridEl.querySelectorAll('[data-date]').forEach(function(cell){
+      cell.addEventListener('click', function(){ handleDateClick(cell.dataset.date); });
+    });
+  }
+
+  calPrevBtn.addEventListener('click', function(){
+    if (calPrevBtn.disabled) return;
+    calViewMonth--; if (calViewMonth < 0) { calViewMonth = 11; calViewYear--; }
+    renderPublicCalendar();
+  });
+  calNextBtn.addEventListener('click', function(){
+    if (calNextBtn.disabled) return;
+    calViewMonth++; if (calViewMonth > 11) { calViewMonth = 0; calViewYear++; }
+    renderPublicCalendar();
+  });
+  // Changing duration or the weekends toggle invalidates any existing pick -
+  // clearest way to avoid a stale range from a different mode.
+  var rangeHintEl = document.getElementById('rangeHint');
+  form.querySelectorAll('input[name=req_duration]').forEach(function(r){
+    r.addEventListener('change', function(){
+      clearSelection();
+      renderPublicCalendar();
+      rangeHintEl.textContent = currentDuration() === '1_week'
+        ? 'Tap a start date above and the working week will be highlighted for you. Tap it again to clear it.'
+        : 'Tap a date above to start a range, then tap another date to set the end. Tap the same date again to clear it.';
+    });
+  });
+  weekendsCheckbox.addEventListener('change', function(){
+    if (currentDuration() === '1_week' && selStart) {
+      selEnd = computeWeekEnd(selStart, weekendsCheckbox.checked);
+      hiddenEndInput.value = (selEnd && selEnd !== selStart) ? selEnd : '';
+      updateSelectionLabel();
+    }
+    renderPublicCalendar();
+  });
+  loadAvailability();
+
+  // Site postcode -> town + return mileage from Chris's base. Informational only -
+  // never blocks submission, matches "flag for review, don't auto-reject" out-of-area jobs.
+  var postcodeInput = document.getElementById('site_postcode');
+  var postcodeInfo = document.getElementById('postcodeInfo');
+  var postcodeDebounce = null;
+  function checkPostcode(){
+    var pc = postcodeInput.value.trim();
+    if (pc.replace(/\s/g, '').length < 5) { postcodeInfo.textContent = ''; return; }
+    fetch('/api/mileage?postcode=' + encodeURIComponent(pc)).then(function(r){ return r.json(); })
+      .then(function(data){
+        if (!data.ok) { postcodeInfo.textContent = ''; return; }
+        var text = (data.town ? data.town + ' · ' : '') + data.milesOneWay + ' mi (' + data.milesReturn + ' mi return)';
+        postcodeInfo.textContent = text;
+        postcodeInfo.classList.toggle('far', !data.withinFreeRadius);
+      }).catch(function(){ postcodeInfo.textContent = ''; });
+  }
+  postcodeInput.addEventListener('input', function(){
+    clearTimeout(postcodeDebounce);
+    postcodeDebounce = setTimeout(checkPostcode, 600);
+  });
+  postcodeInput.addEventListener('blur', checkPostcode);
+
+  // Multi-day extras
+  var durRadios = form.querySelectorAll('input[name=req_duration]');
+  var multiDayWrap = document.getElementById('multiDayWrap');
+  function syncDuration(){
+    var v = form.querySelector('input[name=req_duration]:checked').value;
+    multiDayWrap.style.display = (v === '1_day') ? 'none' : '';
+  }
+  durRadios.forEach(function(r){ r.addEventListener('change', syncDuration); });
+  syncDuration();
+
+  // Start time toggle
+  var tba = document.getElementById('tba');
+  var startTimeWrap = document.getElementById('startTimeWrap');
+  function syncTba(){ startTimeWrap.style.display = tba.checked ? 'none' : ''; }
+  tba.addEventListener('change', syncTba);
+  syncTba();
+
+  function setFieldError(input, hasError){
+    var wrap = input.closest('div') || input.parentElement;
+    if (!wrap) return;
+    wrap.classList.toggle('field-error', !!hasError);
+  }
+  function clearAllErrors(){
+    form.querySelectorAll('.field-error').forEach(function(el){ el.classList.remove('field-error'); });
+    formErrEl.style.display = 'none';
+  }
+
+  function collectPayload(){
+    var fd = new FormData(form);
+    var payload = {
+      idempotency_key: idKey,
+      req_mode: fd.get('req_mode'),
+      req_start_date: fd.get('req_start_date') || null,
+      req_duration: fd.get('req_duration'),
+      req_end_date: fd.get('req_end_date') || null,
+      req_weekends_included: fd.get('req_weekends_included') ? 1 : 0,
+      req_start_time: tba.checked ? 'tba' : (fd.get('req_start_time') || 'tba'),
+      site_postcode: fd.get('site_postcode'),
+      site_address: fd.get('site_address'),
+      support_type: fd.get('support_type'),
+      work_description: fd.get('work_description'),
+      contact_name: fd.get('contact_name'),
+      company_name: fd.get('company_name'),
+      contact_email: fd.get('contact_email'),
+      contact_mobile: fd.get('contact_mobile'),
+      site_contact: fd.get('site_contact'),
+      access_details: fd.get('access_details'),
+      tools_ppe_needed: fd.get('tools_ppe_needed'),
+      materials_arrangement: fd.get('materials_arrangement'),
+      po_reference: fd.get('po_reference'),
+      website_hp: fd.get('website_hp'),
+      turnstile_token: turnstileWidgetId != null && window.turnstile
+        ? window.turnstile.getResponse(turnstileWidgetId) : '',
+    };
+    return payload;
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    clearAllErrors();
+
+    var mode = form.querySelector('input[name=req_mode]:checked').value;
+    if (mode === 'date' && !hiddenDateInput.value) {
+      setFieldError(hiddenDateInput, true);
+      hiddenDateInput.closest('div').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    var payload = collectPayload();
+
+    fetch('/api/book', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    }).then(function(res){ return res.json().then(function(data){ return { status: res.status, data: data }; }); })
+      .then(function(r){
+        if (r.data && r.data.ok){
+          rememberContactDetails();
+          form.style.display = 'none';
+          document.getElementById('successRef').textContent = r.data.ref;
+          successEl.style.display = 'block';
+          successEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          newIdempotencyKey();
+        } else {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send booking request';
+          var errors = (r.data && r.data.errors) || {};
+          var shown = false;
+          Object.keys(errors).forEach(function(key){
+            if (key === '_form' || key === '_bot') return;
+            var input = form.querySelector('[name=' + key + ']');
+            if (input) { setFieldError(input, true); shown = true; }
+          });
+          formErrEl.textContent = (errors._form) || 'Please check the highlighted fields and try again.';
+          formErrEl.style.display = 'block';
+          if (window.turnstile && turnstileWidgetId != null) window.turnstile.reset(turnstileWidgetId);
+          if (!shown) formErrEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }).catch(function(){
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send booking request';
+        formErrEl.textContent = 'Could not send that — check your connection and try again. Your details are still filled in above.';
+        formErrEl.style.display = 'block';
+      });
+  });
+
+  fetch('/api/config').then(function(r){ return r.json(); }).then(function(cfg){
+    if (!cfg.turnstileSiteKey) return;
+    var box = document.getElementById('turnstileBox');
+    function render(){
+      turnstileWidgetId = window.turnstile.render(box, { sitekey: cfg.turnstileSiteKey });
+    }
+    if (window.turnstile) render();
+    else window.addEventListener('load', function(){ if (window.turnstile) render(); });
+  }).catch(function(){});
+})();
+</script>
+</body></html>

@@ -1,0 +1,17 @@
+# Secrets and local state — never on GitHub
+.dev.vars
+**/.dev.vars
+.wrangler/
+**/.wrangler/
+node_modules/
+**/node_modules/
+
+# Obsidian's per-device layout
+**/.obsidian/workspace.json
+**/.obsidian/workspace-mobile.json
+**/.obsidian/plugins/obsidian-git/obsidian_askpass.sh
+
+# macOS
+.DS_Store
+._*
+**/._*

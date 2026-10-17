@@ -1,0 +1,24 @@
+name = "cdcs-booking"
+pages_build_output_dir = "public"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "cdcs-booking-db"
+database_id = "213a971a-e418-450a-a13a-a868e3b78555"
+
+[vars]
+APP_URL = "https://book.cdcscontracts.com"
+OWNER_EMAIL = "chris@cdcscontracts.com"
+EMAIL_FROM = "CDCS Contracts <bookings@cdcscontracts.com>"
+EMAIL_REPLY_TO = "chris@cdcscontracts.com"
+TURNSTILE_SITE_KEY = "0x4AAAAAAEr5gKjZ4nvoWVRb"
+
+# Secrets - set with `wrangler pages secret put <NAME> --project-name cdcs-booking`, never here:
+#   RESEND_API_KEY        (from resend.com)
+#   ADMIN_PASSWORD_HASH   (output of scripts/hash-password.js)
+#   TURNSTILE_SECRET_KEY  (from the Turnstile widget you create)
+#   CALLMEBOT_PHONE       (your WhatsApp number, e.g. +447356003438)
+#   CALLMEBOT_APIKEY      (from opting in with CallMeBot)
+#   IP_HASH_SALT          (any random string, e.g. `openssl rand -hex 16`)

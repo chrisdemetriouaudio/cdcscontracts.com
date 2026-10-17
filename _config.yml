@@ -1,0 +1,18 @@
+# GitHub Pages publishes this repo as cdcscontracts.com. Only the landing page
+# (index.html), its logo and CNAME are the website; everything else is source,
+# drafts or notes and is never published.
+exclude:
+  - booking/
+  - docs/
+  - CDCS-PMO/
+  - "Claude outputs/"
+  - quote.html
+  - quote_1.html
+  - quote_2.html
+  - quote_3.html
+  - quote_4.html
+  - quote_5.html
+  - cdcs-card-draft.html
+  - README.md
+  - AGENTS.md
+  - CLAUDE.md

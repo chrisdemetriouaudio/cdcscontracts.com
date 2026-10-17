@@ -1,0 +1,532 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Dashboard &middot; CDCS Contracts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Azeret+Mono:wght@400;500;600&display=swap">
+<style>
+:root{--ink:#2B282A;--paper:#ECEBEA;--accent:#FEBD17;--muted:#6E6663;--bg:#DCD8D2;--fg:#2B282A;
+  --rule:#C4BFB8;--card-rule:#4A4344;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root{--bg:#1A1819;--fg:#ECEBEA;--rule:#332F30;--muted:#8E8683}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:Archivo,Arial,sans-serif;
+  padding:1rem 1rem 4rem;display:flex;flex-direction:column;align-items:center;gap:1rem}
+.wrap{width:100%;max-width:44rem;display:flex;flex-direction:column;gap:1rem}
+h1{font-size:1.2rem;margin:0}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:.6rem}
+.eyebrow{font-family:"Azeret Mono",monospace;font-size:.6rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;min-height:40px;
+  padding:.55rem .9rem;border-radius:8px;font-size:.85rem;font-weight:700;border:1px solid transparent;
+  cursor:pointer;background:transparent;color:var(--fg);border-color:var(--rule)}
+.btn-primary{background:var(--accent);color:#231F20;border-color:var(--accent)}
+.btn-approve{background:#2E7D46;color:#fff;border-color:#2E7D46}
+.btn-danger{background:transparent;color:#B3261E;border-color:#B3261E}
+.btn:disabled{opacity:.5;cursor:default}
+input,textarea,select{width:100%;font:inherit;font-size:.9rem;padding:.6rem .7rem;
+  border-radius:8px;border:1px solid var(--rule);background:#fff;color:#2B282A}
+@media (prefers-color-scheme:dark){input,textarea,select{background:#2B282A;color:var(--paper);border-color:#4A4344}}
+label{display:block;font-size:.78rem;font-weight:600;margin:.5rem 0 .25rem}
+.card{background:var(--ink);color:var(--paper);border-radius:12px;padding:1rem 1.1rem}
+.login-card{max-width:22rem;margin:3rem auto 0}
+.tabs{display:flex;gap:.4rem;flex-wrap:wrap}
+.tab{padding:.4rem .8rem;border-radius:99px;font-size:.78rem;font-weight:700;cursor:pointer;
+  border:1px solid var(--rule);background:transparent;color:var(--fg)}
+.tab.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.search{margin-top:.2rem}
+.booking{background:var(--ink);color:var(--paper);border-radius:12px;margin-bottom:.7rem;
+  overflow:hidden}
+.booking-head{padding:.85rem 1rem;display:flex;justify-content:space-between;gap:.6rem;
+  align-items:flex-start;cursor:pointer}
+.booking-head:hover{background:#3E393A}
+.ref{font-family:"Azeret Mono",monospace;font-size:.75rem;color:var(--accent);font-weight:700}
+.badge{font-family:"Azeret Mono",monospace;font-size:.6rem;letter-spacing:.08em;
+  text-transform:uppercase;padding:.2rem .5rem;border-radius:5px;font-weight:700;white-space:nowrap}
+.badge-pending{background:#4A4344;color:#FEBD17}
+.badge-proposed{background:#4A4344;color:#8BB8FF}
+.badge-confirmed{background:#2E7D46;color:#fff}
+.badge-declined,.badge-expired,.badge-cancelled{background:#4A4344;color:#9A908C}
+.title-line{font-size:.92rem;font-weight:600;margin:.15rem 0 0}
+.sub-line{font-size:.78rem;color:#9A908C;margin-top:.15rem}
+.booking-body{padding:0 1rem 1rem;border-top:1px solid #3E393A;display:none}
+.booking-body.open{display:block}
+dl.fields{display:flex;flex-direction:column;margin:.7rem 0}
+.f{display:grid;grid-template-columns:7.5rem 1fr;gap:.6rem;padding:.4rem 0;
+  border-top:1px solid #3E393A;font-size:.85rem}
+.f:first-child{border-top:0}
+.f dt{font-family:"Azeret Mono",monospace;font-size:.58rem;letter-spacing:.08em;
+  text-transform:uppercase;color:#9A908C}
+.f dd{margin:0}
+.actions-panel{margin-top:.8rem;padding-top:.8rem;border-top:1px solid #3E393A}
+.action-form{display:none;margin-top:.6rem;background:#3E393A;border-radius:8px;padding:.8rem}
+.action-form.open{display:block}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.btnrow{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.7rem}
+.notif-list{margin-top:.6rem;font-size:.78rem}
+.notif{display:flex;justify-content:space-between;gap:.5rem;padding:.3rem 0;
+  border-top:1px solid #3E393A}
+.notif:first-child{border-top:0}
+.tag-sent{color:#7CC98A}
+.tag-failed{color:#FF9C8F}
+.tag-pending{color:#9A908C}
+.err{color:#FF6B5B;font-size:.8rem;margin-top:.4rem}
+.msg{font-size:.78rem;color:var(--muted)}
+.calendar{background:var(--ink);color:var(--paper);border-radius:12px;padding:1rem}
+.cal-weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-top:.7rem}
+.cal-weekdays span{text-align:center;font-family:"Azeret Mono",monospace;font-size:.6rem;
+  letter-spacing:.06em;text-transform:uppercase;color:#9A908C}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-top:.3rem}
+.cal-day{min-height:2.6rem;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1px;font-size:.72rem;border-radius:5px;background:#3E393A;padding:2px 1px;overflow:hidden}
+.cal-day-num{line-height:1}
+.cal-day-reason{font-size:.52rem;line-height:1.1;color:#C7C1BC;text-align:center;
+  max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cal-day.confirmed{background:#2E7D46;color:#fff;font-weight:700}
+.cal-day.blocked{background:#4A4344;color:#9A908C}
+.cal-day.blocked .cal-day-num{text-decoration:line-through}
+.cal-day.pad{background:transparent}
+.cal-legend{display:flex;gap:1rem;font-size:.72rem;color:#9A908C;margin-top:.5rem}
+.dot{display:inline-block;width:.6rem;height:.6rem;border-radius:2px;margin-right:.3rem;vertical-align:middle}
+.block-row{display:flex;justify-content:space-between;align-items:center;gap:.5rem;
+  font-size:.82rem;padding:.4rem 0;border-top:1px solid #3E393A}
+.block-row:first-child{border-top:0}
+</style></head><body>
+
+<div class="wrap">
+  <div class="topbar">
+    <div><p class="eyebrow">CDCS Contracts</p><h1>Booking dashboard</h1></div>
+    <button class="btn" id="logoutBtn" style="display:none">Log out</button>
+  </div>
+
+  <div id="loginCard" class="card login-card">
+    <h2 style="margin:0 0 .3rem;font-size:1rem">Owner login</h2>
+    <p class="msg">Private page — reference links from booking emails still work without this.</p>
+    <label for="pw">Password</label>
+    <input type="password" id="pw" autocomplete="current-password">
+    <div class="err" id="loginErr" style="display:none"></div>
+    <div class="btnrow"><button class="btn btn-primary" id="loginBtn" style="width:100%">Log in</button></div>
+  </div>
+
+  <div id="dash" style="display:none">
+    <div class="calendar">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem">
+        <button class="btn" id="calPrevBtn" style="min-height:32px;padding:.2rem .6rem" aria-label="Previous month">‹</button>
+        <strong id="calTitle" style="font-size:.85rem"></strong>
+        <button class="btn" id="calNextBtn" style="min-height:32px;padding:.2rem .6rem" aria-label="Next month">›</button>
+      </div>
+      <div style="text-align:right"><span class="msg" id="retryInfo"></span></div>
+      <div class="cal-weekdays">
+        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+      <div class="cal-legend">
+        <span><span class="dot" style="background:#2E7D46"></span>Confirmed</span>
+        <span><span class="dot" style="background:#4A4344"></span>Blocked</span>
+      </div>
+      <details style="margin-top:.7rem">
+        <summary style="cursor:pointer;font-size:.8rem;font-weight:700;color:var(--accent)">Recurring days off</summary>
+        <p class="msg" style="margin-top:.4rem">Ticked days are blocked every week, indefinitely — no need to add them one at a time.</p>
+        <div id="weeklyOffsList" style="margin-top:.4rem"></div>
+      </details>
+      <details style="margin-top:.7rem">
+        <summary style="cursor:pointer;font-size:.8rem;font-weight:700;color:var(--accent)">Block specific dates</summary>
+        <div style="margin-top:.6rem" class="row2">
+          <div><label>Start date</label><input type="date" id="blockStart"></div>
+          <div><label>End date</label><input type="date" id="blockEnd"></div>
+        </div>
+        <label>Reason (private note)</label>
+        <input type="text" id="blockReason" placeholder="e.g. holiday">
+        <div class="btnrow"><button class="btn btn-primary" id="addBlockBtn">Add block</button></div>
+        <div id="blockList" style="margin-top:.6rem"></div>
+      </details>
+    </div>
+
+    <div style="margin-top:1rem">
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-status="">All</button>
+        <button class="tab" data-status="pending">Pending</button>
+        <button class="tab" data-status="proposed">Proposed</button>
+        <button class="tab" data-status="confirmed">Confirmed</button>
+        <button class="tab" data-status="declined">Declined</button>
+        <button class="tab" data-status="cancelled">Cancelled</button>
+        <button class="tab" data-status="expired">Expired</button>
+      </div>
+      <input class="search" type="text" id="search" placeholder="Search company, site, or reference…">
+    </div>
+
+    <div id="list" style="margin-top:1rem"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var loginCard = document.getElementById('loginCard');
+  var dash = document.getElementById('dash');
+  var logoutBtn = document.getElementById('logoutBtn');
+  var currentStatus = '';
+  var currentSearch = '';
+  var bookingsCache = [];
+
+  function api(path, opts){
+    opts = opts || {};
+    opts.headers = Object.assign({ 'Content-Type': 'application/json' }, opts.headers || {});
+    return fetch(path, opts).then(function(res){
+      return res.json().then(function(data){ return { status: res.status, data: data }; });
+    });
+  }
+
+  function showLogin(){
+    loginCard.style.display = 'block'; dash.style.display = 'none'; logoutBtn.style.display = 'none';
+  }
+  function showDash(){
+    loginCard.style.display = 'none'; dash.style.display = 'block'; logoutBtn.style.display = 'inline-flex';
+  }
+
+  document.getElementById('loginBtn').addEventListener('click', function(){
+    var pw = document.getElementById('pw').value;
+    api('/api/admin/login', { method: 'POST', body: JSON.stringify({ password: pw }) }).then(function(r){
+      if (r.data.ok) { loadBookings(); }
+      else {
+        var e = document.getElementById('loginErr');
+        e.textContent = r.data.error || 'Login failed.'; e.style.display = 'block';
+      }
+    });
+  });
+  document.getElementById('pw').addEventListener('keydown', function(e){
+    if (e.key === 'Enter') document.getElementById('loginBtn').click();
+  });
+
+  logoutBtn.addEventListener('click', function(){
+    api('/api/admin/logout', { method: 'POST' }).then(function(){ showLogin(); });
+  });
+
+  document.getElementById('tabs').addEventListener('click', function(e){
+    var btn = e.target.closest('.tab');
+    if (!btn) return;
+    document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+    btn.classList.add('active');
+    currentStatus = btn.dataset.status;
+    loadBookings();
+  });
+  var searchDebounce;
+  document.getElementById('search').addEventListener('input', function(e){
+    currentSearch = e.target.value;
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(loadBookings, 300);
+  });
+
+  function fmtDate(iso){
+    if (!iso) return '';
+    var d = new Date(iso + 'T12:00:00Z');
+    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Europe/London' });
+  }
+  function whenLabel(b){
+    if (b.req_mode === 'asap') return 'ASAP';
+    if (b.req_mode === 'flexible') return 'Flexible';
+    return fmtDate(b.req_start_date);
+  }
+  var SUPPORT_LABELS = { carpenter_mate: "Carpenter's mate", joinery: 'Joinery support',
+    refurb: 'Refurb support', fitout: 'Fit-out support', other: 'Other / discuss' };
+  var DURATION_LABELS = { '1_day': '1 day', few_days: 'A few days', '1_week': '1 week',
+    longer: 'Longer', not_sure: 'Not sure' };
+
+  function esc(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function loadBookings(){
+    var q = [];
+    if (currentStatus) q.push('status=' + encodeURIComponent(currentStatus));
+    if (currentSearch) q.push('q=' + encodeURIComponent(currentSearch));
+    api('/api/admin/bookings' + (q.length ? '?' + q.join('&') : '')).then(function(r){
+      if (r.status === 401) { showLogin(); return; }
+      showDash();
+      bookingsCache = r.data.bookings || [];
+      renderList();
+      renderCalendar();
+      var ri = document.getElementById('retryInfo');
+      if (r.data.retry && r.data.retry.checked) {
+        ri.textContent = 'Retried ' + r.data.retry.retried + '/' + r.data.retry.checked + ' failed sends';
+      } else { ri.textContent = ''; }
+    });
+  }
+
+  function renderList(){
+    var list = document.getElementById('list');
+    if (!bookingsCache.length) { list.innerHTML = '<p class="msg">No bookings here.</p>'; return; }
+    list.innerHTML = bookingsCache.map(function(b){
+      return '<div class="booking" data-id="' + b.id + '">' +
+        '<div class="booking-head">' +
+          '<div><div class="ref">' + esc(b.ref) + '</div>' +
+            '<div class="title-line">' + esc(b.contact_name) + (b.company_name ? ' — ' + esc(b.company_name) : '') + '</div>' +
+            '<div class="sub-line">' + esc(whenLabel(b)) + ' · ' + esc(DURATION_LABELS[b.req_duration] || '') + ' · ' + esc(b.site_postcode) + ' · ' + esc(SUPPORT_LABELS[b.support_type] || '') + '</div>' +
+          '</div>' +
+          '<span class="badge badge-' + b.status + '">' + esc(b.status) + '</span>' +
+        '</div>' +
+        '<div class="booking-body" id="body-' + b.id + '"></div>' +
+      '</div>';
+    }).join('');
+    list.querySelectorAll('.booking-head').forEach(function(head){
+      head.addEventListener('click', function(){ toggleBooking(head.closest('.booking').dataset.id); });
+    });
+  }
+
+  var openIds = {};
+  function toggleBooking(id){
+    var body = document.getElementById('body-' + id);
+    if (!body) return;
+    if (openIds[id]) { body.classList.remove('open'); openIds[id] = false; return; }
+    openIds[id] = true;
+    body.classList.add('open');
+    body.innerHTML = '<p class="msg">Loading…</p>';
+    api('/api/admin/bookings/' + id).then(function(r){
+      if (!r.data.ok) { body.innerHTML = '<p class="err">Could not load.</p>'; return; }
+      body.innerHTML = renderDetail(r.data.booking, r.data.notifications, r.data.clientHistory);
+      wireDetail(body, r.data.booking);
+    });
+  }
+
+  function fieldRow(k, v){ return v ? '<div class="f"><dt>' + k + '</dt><dd>' + esc(v) + '</dd></div>' : ''; }
+
+  function renderDetail(b, notifs, history){
+    var historyBadge = '';
+    if (history && history.confirmedCount > 0) {
+      historyBadge = '<div class="notice" style="background:#2E7D46;color:#fff;border-radius:8px;padding:.5rem .8rem;font-size:.8rem;margin-bottom:.6rem;">' +
+        'Returning client — ' + history.confirmedCount + ' previous confirmed booking' + (history.confirmedCount > 1 ? 's' : '') +
+        ' (last ' + esc(history.lastRef) + ')</div>';
+    } else if (history && history.totalCount > 0) {
+      historyBadge = '<div class="notice" style="background:#3E393A;color:#fff;border-radius:8px;padding:.5rem .8rem;font-size:.8rem;margin-bottom:.6rem;">' +
+        'Heard from this email before — ' + history.totalCount + ' prior request' + (history.totalCount > 1 ? 's' : '') + ', none confirmed yet</div>';
+    }
+    var f = [
+      fieldRow('When', whenLabel(b)),
+      fieldRow('Duration', DURATION_LABELS[b.req_duration]),
+      fieldRow('End date', b.req_end_date ? fmtDate(b.req_end_date) : ''),
+      fieldRow('Start time', b.req_start_time === 'tba' ? 'To be agreed' : b.req_start_time),
+      fieldRow('Postcode', b.site_postcode),
+      fieldRow('Address', b.site_address),
+      fieldRow('Support', SUPPORT_LABELS[b.support_type]),
+      fieldRow('Description', b.work_description),
+      fieldRow('Email', b.contact_email),
+      fieldRow('Mobile', b.contact_mobile),
+      fieldRow('Site contact', b.site_contact),
+      fieldRow('Access', b.access_details),
+      fieldRow('Tools/PPE', b.tools_ppe_needed),
+      fieldRow('Materials', b.materials_arrangement),
+      fieldRow('PO ref', b.po_reference),
+    ].join('');
+    if (b.status === 'confirmed') {
+      f += fieldRow('Confirmed dates', fmtDate(b.confirmed_start_date) + (b.confirmed_end_date && b.confirmed_end_date !== b.confirmed_start_date ? ' – ' + fmtDate(b.confirmed_end_date) : ''));
+      f += fieldRow('Start time', b.confirmed_start_time === 'tba' ? 'To be agreed' : b.confirmed_start_time);
+      f += fieldRow('Day rate', b.day_rate_pence ? '£' + (b.day_rate_pence / 100).toFixed(2) : '');
+      f += fieldRow('Agreed hours', b.agreed_hours);
+    }
+    if (b.status === 'proposed') {
+      f += fieldRow('Proposed dates', fmtDate(b.proposed_start_date) + (b.proposed_end_date && b.proposed_end_date !== b.proposed_start_date ? ' – ' + fmtDate(b.proposed_end_date) : ''));
+      f += fieldRow('Proposed rate', b.proposed_day_rate_pence ? '£' + (b.proposed_day_rate_pence / 100).toFixed(2) : '');
+      f += fieldRow('Message sent', b.proposed_message);
+    }
+    if (b.decline_reason) f += fieldRow('Decline/cancel reason', b.decline_reason);
+
+    var notifHtml = notifs.length ? '<div class="notif-list">' + notifs.map(function(n){
+      var tag = n.status === 'sent' ? 'tag-sent' : n.status === 'failed' ? 'tag-failed' : 'tag-pending';
+      var retry = n.status === 'failed' ? '<button class="btn" data-retry="' + n.id + '" style="min-height:28px;padding:.2rem .6rem;font-size:.72rem">Retry</button>' : '';
+      return '<div class="notif"><span>' + esc(n.channel) + ' <span class="' + tag + '">' + esc(n.status) + '</span></span>' + retry + '</div>';
+    }).join('') + '</div>' : '<p class="msg">No notifications logged.</p>';
+
+    var actions = '';
+    if (b.status === 'pending' || b.status === 'proposed') {
+      actions += '<div class="btnrow">';
+      actions += '<button class="btn btn-approve" data-toggle="approve">Approve &amp; confirm</button>';
+      actions += '<button class="btn btn-primary" data-toggle="propose">Propose different</button>';
+      actions += '<button class="btn btn-danger" data-toggle="decline">Decline</button>';
+      actions += '</div>';
+      actions += '<div class="action-form" data-form="approve">' +
+        '<div class="row2"><div><label>Start date</label><input type="date" data-f="start_date" value="' + esc(b.req_start_date || '') + '"></div>' +
+        '<div><label>End date</label><input type="date" data-f="end_date"></div></div>' +
+        '<div class="row2"><div><label>Start time</label><input type="text" data-f="start_time" placeholder="To be agreed" value="' + (b.req_start_time !== 'tba' ? esc(b.req_start_time) : '') + '"></div>' +
+        '<div><label>Day rate (£)</label><input type="number" data-f="day_rate" min="0"></div></div>' +
+        '<label>Agreed hours</label><input type="text" data-f="agreed_hours">' +
+        '<div class="btnrow"><button class="btn btn-approve" data-submit="approve">Confirm booking</button></div>' +
+        '<div class="err" data-err="approve" style="display:none"></div></div>';
+      actions += '<div class="action-form" data-form="propose">' +
+        '<div class="row2"><div><label>Proposed start</label><input type="date" data-f="start_date"></div>' +
+        '<div><label>Proposed end</label><input type="date" data-f="end_date"></div></div>' +
+        '<label>Proposed day rate (£)</label><input type="number" data-f="day_rate" min="0">' +
+        '<label>Message to contractor</label><textarea data-f="message"></textarea>' +
+        '<div class="btnrow"><button class="btn btn-primary" data-submit="propose">Send proposal</button></div>' +
+        '<div class="err" data-err="propose" style="display:none"></div></div>';
+      actions += '<div class="action-form" data-form="decline">' +
+        '<label>Reason (optional, sent to contractor)</label><textarea data-f="reason"></textarea>' +
+        '<div class="btnrow"><button class="btn btn-danger" data-submit="decline">Decline request</button></div>' +
+        '<div class="err" data-err="decline" style="display:none"></div></div>';
+    }
+    if (b.status === 'confirmed') {
+      actions += '<div class="btnrow"><button class="btn btn-danger" data-toggle="cancel">Cancel booking</button></div>';
+      actions += '<div class="action-form" data-form="cancel">' +
+        '<label>Reason (sent to contractor)</label><textarea data-f="reason"></textarea>' +
+        '<div class="btnrow"><button class="btn btn-danger" data-submit="cancel">Confirm cancellation</button></div>' +
+        '<div class="err" data-err="cancel" style="display:none"></div></div>';
+    }
+
+    return historyBadge + '<dl class="fields">' + f + '</dl>' +
+      '<div class="actions-panel">' + actions + '</div>' +
+      '<label style="margin-top:.9rem">Private notes</label>' +
+      '<textarea data-notes>' + esc(b.owner_notes || '') + '</textarea>' +
+      '<div class="btnrow"><button class="btn" data-save-notes>Save notes</button></div>' +
+      '<div class="actions-panel"><strong style="font-size:.78rem">Notifications</strong>' + notifHtml + '</div>';
+  }
+
+  function wireDetail(body, booking){
+    body.querySelectorAll('[data-toggle]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var key = btn.dataset.toggle;
+        var form = body.querySelector('[data-form="' + key + '"]');
+        if (form) form.classList.toggle('open');
+      });
+    });
+    body.querySelectorAll('[data-submit]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var action = btn.dataset.submit;
+        var form = body.querySelector('[data-form="' + action + '"]');
+        var payload = { action: action };
+        form.querySelectorAll('[data-f]').forEach(function(inp){
+          var v = inp.value;
+          if (inp.dataset.f === 'day_rate') v = v || null;
+          payload[inp.dataset.f] = v || null;
+        });
+        btn.disabled = true;
+        api('/api/admin/bookings/' + booking.id, { method: 'PATCH', body: JSON.stringify(payload) }).then(function(r){
+          btn.disabled = false;
+          var errEl = body.querySelector('[data-err="' + action + '"]');
+          if (r.status === 401) { showLogin(); return; }
+          if (!r.data.ok) { errEl.textContent = r.data.error || 'Could not complete.'; errEl.style.display = 'block'; return; }
+          loadBookings();
+        });
+      });
+    });
+    body.querySelector('[data-save-notes]').addEventListener('click', function(e){
+      var notes = body.querySelector('[data-notes]').value;
+      api('/api/admin/bookings/' + booking.id, { method: 'PATCH', body: JSON.stringify({ action: 'notes', owner_notes: notes }) })
+        .then(function(){ e.target.textContent = 'Saved'; setTimeout(function(){ e.target.textContent = 'Save notes'; }, 1500); });
+    });
+    body.querySelectorAll('[data-retry]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        btn.disabled = true; btn.textContent = '…';
+        api('/api/admin/notifications/' + btn.dataset.retry + '/retry', { method: 'POST' }).then(function(){
+          toggleBooking(booking.id); toggleBooking(booking.id);
+        });
+      });
+    });
+  }
+
+  // Calendar: current + next month, marking confirmed & blocked days.
+  var blocksCache = [];
+  var weeklyOffsCache = [];
+  var WEEKDAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  function renderCalendar(){
+    Promise.all([api('/api/admin/blocks'), api('/api/admin/weekly-offs')]).then(function(results){
+      blocksCache = (results[0].data && results[0].data.blocks) || [];
+      weeklyOffsCache = (results[1].data && results[1].data.offs) || [];
+      drawCalendar();
+      renderBlockList();
+      renderWeeklyOffs();
+    });
+  }
+  var calViewYear = new Date().getFullYear();
+  var calViewMonth = new Date().getMonth();
+  document.getElementById('calPrevBtn').addEventListener('click', function(){
+    calViewMonth--; if (calViewMonth < 0) { calViewMonth = 11; calViewYear--; }
+    drawCalendar();
+  });
+  document.getElementById('calNextBtn').addEventListener('click', function(){
+    calViewMonth++; if (calViewMonth > 11) { calViewMonth = 0; calViewYear++; }
+    drawCalendar();
+  });
+  function drawCalendar(){
+    var grid = document.getElementById('calGrid');
+    var y = calViewYear, m = calViewMonth;
+    document.getElementById('calTitle').textContent = new Date(y, m, 1).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+    var first = new Date(y, m, 1);
+    var startPad = (first.getDay() + 6) % 7; // Monday-first
+    var daysInMonth = new Date(y, m + 1, 0).getDate();
+    var confirmedDates = {};
+    bookingsCache.filter(function(b){ return b.status === 'confirmed'; }).forEach(function(b){
+      markRange(confirmedDates, b.confirmed_start_date, b.confirmed_end_date || b.confirmed_start_date);
+    });
+    var blockReasons = {};
+    blocksCache.forEach(function(bl){ markRange(blockReasons, bl.start_date, bl.end_date, bl.reason || 'Blocked'); });
+    var offByWeekday = {};
+    weeklyOffsCache.forEach(function(o){ offByWeekday[o.weekday] = o.reason || 'Day off'; });
+
+    var html = '';
+    for (var i = 0; i < startPad; i++) html += '<div class="cal-day pad"></div>';
+    for (var d = 1; d <= daysInMonth; d++) {
+      var iso = y + '-' + String(m + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+      var weekday = new Date(y, m, d).getDay();
+      var reason = blockReasons[iso] || offByWeekday[weekday] || null;
+      var cls = confirmedDates[iso] ? 'confirmed' : (reason ? 'blocked' : '');
+      var reasonHtml = (!confirmedDates[iso] && reason) ? '<span class="cal-day-reason">' + esc(reason) + '</span>' : '';
+      html += '<div class="cal-day ' + cls + '"><span class="cal-day-num">' + d + '</span>' + reasonHtml + '</div>';
+    }
+    grid.innerHTML = html;
+  }
+  function markRange(map, start, end, value){
+    var d = new Date(start + 'T00:00:00Z');
+    var endD = new Date(end + 'T00:00:00Z');
+    while (d <= endD) { map[d.toISOString().slice(0, 10)] = value === undefined ? true : value; d.setUTCDate(d.getUTCDate() + 1); }
+  }
+  function renderWeeklyOffs(){
+    var el = document.getElementById('weeklyOffsList');
+    var onDays = {};
+    weeklyOffsCache.forEach(function(o){ onDays[o.weekday] = o.reason; });
+    el.innerHTML = WEEKDAY_NAMES.map(function(name, idx){
+      var checked = onDays.hasOwnProperty(idx) ? 'checked' : '';
+      return '<label class="checkline" style="margin-top:.3rem"><input type="checkbox" data-weekday="' + idx + '" ' + checked + '><span>' + name + '</span></label>';
+    }).join('');
+    el.querySelectorAll('[data-weekday]').forEach(function(cb){
+      cb.addEventListener('change', function(){
+        var weekday = Number(cb.dataset.weekday);
+        if (cb.checked) {
+          api('/api/admin/weekly-offs', { method: 'POST', body: JSON.stringify({ weekday: weekday, reason: 'Day off' }) }).then(renderCalendar);
+        } else {
+          api('/api/admin/weekly-offs?weekday=' + weekday, { method: 'DELETE' }).then(renderCalendar);
+        }
+      });
+    });
+  }
+  function renderBlockList(){
+    var el = document.getElementById('blockList');
+    if (!blocksCache.length) { el.innerHTML = '<p class="msg">No blocked dates.</p>'; return; }
+    el.innerHTML = blocksCache.map(function(b){
+      return '<div class="block-row"><span>' + fmtDate(b.start_date) + (b.end_date !== b.start_date ? ' – ' + fmtDate(b.end_date) : '') + (b.reason ? ' — ' + esc(b.reason) : '') + '</span>' +
+        '<button class="btn btn-danger" data-del-block="' + b.id + '" style="min-height:30px;padding:.2rem .6rem;font-size:.75rem">Remove</button></div>';
+    }).join('');
+    el.querySelectorAll('[data-del-block]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        api('/api/admin/blocks?id=' + encodeURIComponent(btn.dataset.delBlock), { method: 'DELETE' }).then(renderCalendar);
+      });
+    });
+  }
+  document.getElementById('addBlockBtn').addEventListener('click', function(){
+    var start = document.getElementById('blockStart').value;
+    var end = document.getElementById('blockEnd').value || start;
+    var reason = document.getElementById('blockReason').value;
+    if (!start) return;
+    api('/api/admin/blocks', { method: 'POST', body: JSON.stringify({ start_date: start, end_date: end, reason: reason }) })
+      .then(function(){
+        document.getElementById('blockStart').value = '';
+        document.getElementById('blockEnd').value = '';
+        document.getElementById('blockReason').value = '';
+        renderCalendar();
+      });
+  });
+
+  // Initial: try to load bookings; 401 means show login.
+  loadBookings();
+})();
+</script>
+</body></html>
