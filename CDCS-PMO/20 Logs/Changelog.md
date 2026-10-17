@@ -10,7 +10,12 @@ updated: 2026-10-17
 > **How to read:** tap a date to open it. Only the newest is open.
 > **Back to:** [[00 Dashboard]]
 
-> [!success]+ 🔗 17 Oct 2026 · Everything on GitHub; this vault
+> [!success]+ 🚀 17 Oct 2026 · Demo brand and watermark · live
+> - **Landing page:** C D Construction Services, CD monogram, "WhatsApp me" with no link, THIS IS A DEMO watermark (`340f641`).
+> - **Booking pages:** same changes in the code; live after the next booking deploy.
+> - **Labs:** the CDCS card is labelled Demo with the new screenshot.
+
+> [!success]- 🔗 17 Oct 2026 · Everything on GitHub; this vault
 > - **Synced:** the booking system, Quote Engine drafts and plan are now in the repo (`7f126ec`). Secrets stay local.
 > - **Privacy:** the home location is no longer in the code.
 > - **Website:** unchanged; nothing new published.
