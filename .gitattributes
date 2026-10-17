@@ -1,0 +1,6 @@
+# Drafts and docs aren't the product's code: keep them out of GitHub's language stats.
+quote*.html linguist-documentation
+cdcs-card-draft.html linguist-documentation
+Claude\ outputs/** linguist-documentation
+docs/** linguist-documentation
+CDCS-PMO/** linguist-documentation
