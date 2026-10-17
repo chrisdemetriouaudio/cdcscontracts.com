@@ -119,8 +119,10 @@ details[open] > summary::before{content:"–"}
   padding:.85rem 1rem; font-size:.82rem; line-height:1.5; margin:1.1rem 0;
 }
 .err{color:#FF9C8F; font-size:.78rem; margin-top:.3rem; display:none}
-.field-error input, .field-error textarea, .field-error select{border-color:#FF6B5B}
-.field-error .err{display:block}
+/* Errors: only the field that needs fixing turns red, and only its own message shows. */
+[aria-invalid="true"]{border-color:#FF6B5B !important}
+.is-invalid{outline:1px solid #FF6B5B; outline-offset:4px; border-radius:12px}
+.err.show{display:block}
 .submit-row{margin-top:.4rem}
 .formerr{
   background:#3E2223; border:1px solid #FF6B5B; color:#FFD9D3; padding:.8rem 1rem;
@@ -593,15 +595,40 @@ body::after{content:"";position:fixed;inset:0;z-index:2147483647;pointer-events:
   tba.addEventListener('change', syncTba);
   syncTba();
 
+  // Each field shows its own error and nothing else changes: a text box gets a red
+  // border, a group of choices (or the calendar) gets a red outline, and the field's
+  // own message appears. (Marking the nearest <div> used to turn whole sections red.)
+  function errorAnchor(input){
+    if (input.type === 'hidden') return input.parentElement.querySelector('.mini-cal') || input;
+    return input.closest('.choices, .postcode-row') || input;
+  }
+  function errorMessageFor(input){
+    var start = input.type === 'hidden' ? input : (input.closest('.choices, .postcode-row') || input);
+    for (var n = start.nextElementSibling; n; n = n.nextElementSibling) {
+      if (n.classList.contains('err')) return n;
+      if (n.matches('label, input, textarea, select, fieldset, .choices')) return null;
+    }
+    return null;
+  }
   function setFieldError(input, hasError){
-    var wrap = input.closest('div') || input.parentElement;
-    if (!wrap) return;
-    wrap.classList.toggle('field-error', !!hasError);
+    var on = !!hasError;
+    if (/^(text|email|tel|time|date|number|search|url)$/.test(input.type) || input.tagName !== 'INPUT') {
+      if (on) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
+    }
+    var anchor = errorAnchor(input);
+    if (anchor !== input) anchor.classList.toggle('is-invalid', on);
+    var msg = errorMessageFor(input);
+    if (msg) msg.classList.toggle('show', on);
   }
   function clearAllErrors(){
-    form.querySelectorAll('.field-error').forEach(function(el){ el.classList.remove('field-error'); });
+    form.querySelectorAll('[aria-invalid]').forEach(function(el){ el.removeAttribute('aria-invalid'); });
+    form.querySelectorAll('.is-invalid').forEach(function(el){ el.classList.remove('is-invalid'); });
+    form.querySelectorAll('.err.show').forEach(function(el){ el.classList.remove('show'); });
     formErrEl.style.display = 'none';
   }
+  // As soon as someone fixes a field, its red goes away.
+  form.addEventListener('input', function(e){ if (e.target.name) setFieldError(e.target, false); });
+  form.addEventListener('change', function(e){ if (e.target.name) setFieldError(e.target, false); });
 
   function collectPayload(){
     var fd = new FormData(form);
@@ -640,7 +667,7 @@ body::after{content:"";position:fixed;inset:0;z-index:2147483647;pointer-events:
     var mode = form.querySelector('input[name=req_mode]:checked').value;
     if (mode === 'date' && !hiddenDateInput.value) {
       setFieldError(hiddenDateInput, true);
-      hiddenDateInput.closest('div').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      errorAnchor(hiddenDateInput).scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
