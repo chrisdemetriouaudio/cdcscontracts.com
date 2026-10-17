@@ -18,8 +18,8 @@ export const DURATIONS = {
 
 export const MATERIALS = {
   supplied_on_site: 'Supplied on site',
-  collection_requested: "Chris to collect (invoiced at cost)",
-  discuss: 'To discuss with Chris',
+  collection_requested: "CDCS to collect (invoiced at cost)",
+  discuss: 'To discuss with CDCS',
 };
 
 const MAX_LENS = {
@@ -42,7 +42,7 @@ export function validateBookingPayload(body) {
   const out = {};
 
   out.req_mode = ['date', 'flexible', 'asap'].includes(body.req_mode) ? body.req_mode : null;
-  if (!out.req_mode) errors.req_mode = 'Choose when you need Chris.';
+  if (!out.req_mode) errors.req_mode = 'Choose when you need me.';
 
   out.req_start_date = null;
   if (out.req_mode === 'date') {

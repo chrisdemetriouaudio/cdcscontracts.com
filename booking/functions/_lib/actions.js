@@ -107,7 +107,7 @@ export async function cancelBooking(env, db, booking, { reason }) {
 
   const content = contractorDeclinedEmail({
     ref: booking.ref,
-    reason: (reason || '').trim() || 'This booking has been cancelled by Chris.',
+    reason: (reason || '').trim() || 'This booking has been cancelled.',
   });
   await sendAndLog(env, db, {
     bookingId: booking.id, channel: 'email_contractor_declined',

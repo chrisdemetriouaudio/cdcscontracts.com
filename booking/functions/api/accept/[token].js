@@ -28,7 +28,7 @@ export async function onRequestPost({ request, params, env }) {
       bookingId: booking.id, channel: 'whatsapp_owner',
       payload: { message: `Heads up: ${booking.ref} tried to accept ${startDate}-${endDate} but that's now unavailable. Needs a follow-up.` },
     });
-    return errorPage(`Sorry — ${startDate} to ${endDate} was just taken by another confirmed booking. Chris has been notified and will follow up with alternative dates.`);
+    return errorPage(`Sorry — ${startDate} to ${endDate} was just taken by another confirmed booking. I've been notified and will follow up with alternative dates.`);
   }
 
   if (env.OWNER_EMAIL) {
