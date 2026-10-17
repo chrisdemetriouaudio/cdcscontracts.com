@@ -14,8 +14,7 @@ updated: 2026-10-17
 
 ## 👉 To do
 
-- [ ] 🛠️ **Set `HOME_LAT` and `HOME_LON`** as Cloudflare secrets before the next deploy.
-- [ ] 🛠️ **Check the set-up steps** against the live system: e-mail (Resend), Turnstile, WhatsApp alerts, admin password.
+- 💭 **Optional: WhatsApp alerts to you** aren't set up (no CallMeBot settings). E-mail alerts work.
 
 ## ✅ Done
 
@@ -28,6 +27,8 @@ updated: 2026-10-17
 > - [x] **Added a retry worker** that resends failed notifications every 15 minutes.
 > - [x] **Notifications built in:** e-mail through Resend, WhatsApp alerts to Chris through CallMeBot (live set-up not re-checked yet).
 > - [x] **Admin dashboard** behind a password, with sign-out.
+> - [x] **Checked the live settings** (17 Oct 2026): password, salt, e-mail key and Turnstile are set; WhatsApp alerts are not.
+> - [x] **Home location now private settings** (`HOME_LAT`, `HOME_LON`); distance check works (17 Oct 2026).
 
 > [!abstract]- 🧠 What this phase taught (tap to open)
 > - Free tiers (Cloudflare, Resend) cover a one-person business with room to spare.

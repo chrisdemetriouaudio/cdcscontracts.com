@@ -9,12 +9,12 @@ updated: 2026-10-17
 > [!info] At a glance
 > **What:** present the business as a demo: C D Construction Services, no personal name, photo or WhatsApp link, and a THIS IS A DEMO watermark.
 > **When:** 17 Oct 2026.
-> **Status:** ✅ Landing page live (17 Oct 2026). Booking pages change at their next deploy.
+> **Status:** ✅ Live everywhere (17 Oct 2026): landing page and booking system.
 > **Back to:** [[00 Dashboard]]
 
 ## 👉 To do
 
-- [ ] 🛠️ **Deploy the booking system** so its pages get the new wording and watermark (needs the booking account's login; set `HOME_LAT`/`HOME_LON` first).
+- Nothing right now.
 
 ## ✅ Done
 
@@ -23,4 +23,5 @@ updated: 2026-10-17
 > - [x] **Changed the button to "WhatsApp me"** with no link; booking text in the first person, no number.
 > - [x] **Added a THIS IS A DEMO watermark** to every page (PR #2, `340f641`).
 > - [x] **Refreshed the Labs card:** new screenshot, labelled Demo (Labs `852a5df`).
+> - [x] **Deployed the booking system** with the new wording and watermark (Pages `3970a843`, retry worker `4fd5e6c7`).
 > - [x] **Checked every page and e-mail** for the old name, photo, WhatsApp links and number: none left.

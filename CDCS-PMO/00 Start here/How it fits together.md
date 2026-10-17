@@ -30,4 +30,5 @@ updated: 2026-10-17
 ## ☁️ Cloudflare
 
 - **The booking system** lives in the Cloudflare account **Resale-regroup-fax@duck.com's Account**. It's not the same account as Genesis/Labs or R.E.A.CH.
+- **Deploying it** (signed in to that account, kept separate from other logins): `cd booking && XDG_CONFIG_HOME="$HOME/.config/cdcs-cloudflare" npx wrangler pages deploy --project-name cdcs-booking --branch main`, then `npx wrangler deploy --config retry-worker/wrangler.toml`.
 - **The domain's DNS** (cdcscontracts.com) is on Cloudflare; **e-mail** (Zoho) is on the root domain.

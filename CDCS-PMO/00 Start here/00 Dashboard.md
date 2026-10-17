@@ -8,12 +8,12 @@ updated: 2026-10-17
 > [!info] At a glance
 > **What:** CDCS Contracts (C D Construction Services): a **demo** trade-support business, with a one-page website and a booking system. Every page carries a THIS IS A DEMO watermark.
 > **Website:** ✅ live at cdcscontracts.com (GitHub Pages). **Booking:** ✅ live at book.cdcscontracts.com (Cloudflare).
-> **Checked against the live system:** 17 Oct 2026
+> **Checked against the live system:** 17 Oct 2026 (site, booking, distance check, availability, admin).
 > New here? Read [[How this vault works]] and [[How it fits together]].
 
 ## 🔴 Problems
 
-- Nothing broken. One to know: the booking code's distance check now needs two private settings before its next deploy (see For Claude).
+- Nothing broken.
 
 ## 👉 Your actions
 
@@ -23,9 +23,6 @@ updated: 2026-10-17
 
 ## 🛠️ For Claude
 
-- [ ] **Deploy the booking system** with the new wording (needs the booking account's login, and `HOME_LAT`/`HOME_LON` set first).
-- [ ] **Set `HOME_LAT` and `HOME_LON`** as Cloudflare secrets before the next booking deploy (needs the booking account's login).
-- [ ] **Check the booking set-up steps** (e-mail, Turnstile, WhatsApp alerts, password) against the live system.
 
 ## ⏳ Waiting
 
