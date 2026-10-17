@@ -9,12 +9,12 @@ updated: 2026-10-17
 > [!info] At a glance
 > **What:** bring everything into the GitHub repo safely, and show the project on labs.chrisdemetriou.com.
 > **When:** 17 Oct 2026.
-> **Status:** 🟢 Done 17 Oct 2026; Labs listing in review.
+> **Status:** ✅ Done 17 Oct 2026; live on Labs.
 > **Back to:** [[00 Dashboard]]
 
 ## 👉 To do
 
-- [ ] 👉 **Merge the Labs pull request** (fuzzy-parakeet), then tell Claude to release Labs.
+- Nothing right now.
 
 ## ✅ Done
 
