@@ -1,0 +1,58 @@
+/* Project name, always on screen, so you know which vault this is.
+   It shows in 4 places: before every tab title ("CD · 00 Dashboard"), as a coloured
+   label at the top of every note, at the top of the file list, and in the status bar.
+   Another vault: copy this file into its .obsidian/snippets/ and change the 4 lines below.
+   Switch off: Settings → Appearance → CSS snippets → project-name. */
+
+body {
+  --project-name: "CDCS Contracts";
+  --project-short: "CDCS";
+  --project-colour: #334155;
+  --project-ink: #FFFFFF;
+}
+
+/* 1. Every tab: "CD · 00 Dashboard" */
+.workspace-tab-header-inner-title::before {
+  content: var(--project-short) " \B7  ";   /* " · " (written as a code, so any device shows it) */
+  color: var(--project-colour);
+  font-weight: 700;
+}
+
+/* 2. Top of every note, beside its title */
+.view-header-title-container::before {
+  content: var(--project-name);
+  flex: none;
+  align-self: center;
+  margin-right: 0.6em;
+  padding: 0.1em 0.65em;
+  border-radius: 999px;
+  background: var(--project-colour);
+  color: var(--project-ink);
+  font-size: var(--font-ui-smaller);
+  font-weight: 700;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+/* 3. Top of the file list, whichever folder is open */
+.nav-files-container::before {
+  content: var(--project-name);
+  display: block;
+  margin: 0 0 0.5rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 8px;
+  background: var(--project-colour);
+  color: var(--project-ink);
+  font-weight: 700;
+}
+
+/* 4. Status bar, bottom right (desktop) */
+.status-bar::before {
+  content: var(--project-name);
+  margin-right: 0.5em;
+  padding: 0 0.5em;
+  border-radius: 4px;
+  background: var(--project-colour);
+  color: var(--project-ink);
+  font-weight: 700;
+}
