@@ -1,7 +1,10 @@
 /* Project name, always on screen, so you know which vault this is.
    It shows in 4 places: before every tab title ("CD · 00 Dashboard"), as a coloured
-   label at the top of every note, at the top of the file list, and in the status bar.
-   Another vault: copy this file into its .obsidian/snippets/ and change the 4 lines below.
+   label at the top of every note, at the top of the file list (with where the vault lives
+   on this Mac and on GitHub underneath), and in the status bar.
+   Template for every PMO vault (see ~/.claude/CLAUDE.md). Copy into the vault's .obsidian/snippets/
+   as project-name.css, set the 6 lines below, and add "project-name" to enabledCssSnippets in
+   .obsidian/appearance.json.
    Switch off: Settings → Appearance → CSS snippets → project-name. */
 
 body {
@@ -9,6 +12,8 @@ body {
   --project-short: "CDCS";
   --project-colour: #334155;
   --project-ink: #FFFFFF;
+  --project-local: "/Volumes/01 PROJECTS/Claude/cdcscontracts.com/CDCS-PMO";              /* the vault's folder on this Mac */
+  --project-remote: "https://github.com/chrisdemetriouaudio/cdcscontracts.com";  /* its GitHub repository, or "none" */
 }
 
 /* 1. Every tab: "CD · 00 Dashboard" */
@@ -34,16 +39,30 @@ body {
   white-space: nowrap;
 }
 
-/* 3. Top of the file list, whichever folder is open */
-.nav-files-container::before {
+/* 3. Top of the file list: the name, under the file list's buttons */
+.workspace-leaf-content[data-type="file-explorer"] .nav-header::after {
   content: var(--project-name);
   display: block;
-  margin: 0 0 0.5rem;
+  margin: var(--size-4-1) var(--size-4-1) 0;
   padding: 0.45rem 0.75rem;
   border-radius: 8px;
   background: var(--project-colour);
   color: var(--project-ink);
   font-weight: 700;
+}
+
+/* 3b. Right under the name, in bold: where the vault lives on this Mac and on GitHub */
+.nav-files-container::before {
+  content: "local: " var(--project-local) "\A remote: " var(--project-remote);
+  display: block;
+  margin: 0 0 0.6rem;
+  padding: 0 0.75rem;
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+  font-weight: 700;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 /* 4. Status bar, bottom right (desktop) */
