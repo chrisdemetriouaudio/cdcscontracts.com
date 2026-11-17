@@ -1,5 +1,6 @@
 {
   "enabledCssSnippets": [
-    "pmo-readable"
+    "pmo-readable",
+    "project-name"
   ]
 }
