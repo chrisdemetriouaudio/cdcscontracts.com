@@ -21,6 +21,6 @@ TURNSTILE_SITE_KEY = "0x4AAAAAAEr5gKjZ4nvoWVRb"
 #   RESEND_API_KEY        (from resend.com)
 #   ADMIN_PASSWORD_HASH   (output of scripts/hash-password.js)
 #   TURNSTILE_SECRET_KEY  (from the Turnstile widget you create)
-#   CALLMEBOT_PHONE       (your WhatsApp number, e.g. +447356003438)
+#   CALLMEBOT_PHONE       (your WhatsApp number, e.g. +447700900123)
 #   CALLMEBOT_APIKEY      (from opting in with CallMeBot)
 #   IP_HASH_SALT          (any random string, e.g. `openssl rand -hex 16`)
