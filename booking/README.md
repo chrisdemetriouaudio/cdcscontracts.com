@@ -55,7 +55,7 @@ testing, set it before sharing the link widely.
 2. WhatsApp that number: `I allow callmebot to send me messages`.
 3. You'll get an API key back by reply. Then:
    ```
-   npx wrangler pages secret put CALLMEBOT_PHONE   # your number, e.g. +447356003438
+   npx wrangler pages secret put CALLMEBOT_PHONE   # your number, e.g. +447700900123
    npx wrangler pages secret put CALLMEBOT_APIKEY
    npx wrangler secret put CALLMEBOT_PHONE --config retry-worker/wrangler.toml
    npx wrangler secret put CALLMEBOT_APIKEY --config retry-worker/wrangler.toml
