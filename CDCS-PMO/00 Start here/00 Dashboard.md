@@ -1,6 +1,6 @@
 ---
 title: Dashboard
-updated: 2026-10-17
+updated: 2026-11-27
 ---
 
 # 🎛️ Dashboard
@@ -9,6 +9,7 @@ updated: 2026-10-17
 > **What:** CDCS Contracts (C D Construction Services): a **demo** trade-support business, with a one-page website and a booking system. Every page carries a THIS IS A DEMO watermark.
 > **Website:** ✅ live at cdcscontracts.com (GitHub Pages). **Booking:** ✅ live at book.cdcscontracts.com (Cloudflare), with an invoice and a test-mode card payment.
 > **Checked against the live system:** 17 Oct 2026 (site, booking, distance check, availability, admin).
+> **Latest change:** 26 Nov 2026, private details removed and a README added ([[Changelog]]).
 > New here? Read [[How this vault works]] and [[How it fits together]].
 
 ## 🔴 Problems

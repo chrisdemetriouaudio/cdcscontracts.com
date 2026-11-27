@@ -30,7 +30,7 @@ updated: 2026-10-17
 
 ## ☁️ Cloudflare
 
-- **The booking system** lives in the Cloudflare account **Resale-regroup-fax@duck.com's Account**. It's not the same account as Genesis/Labs or R.E.A.CH.
+- **The booking system** lives in its own Cloudflare account (the account name is kept out of this public repo). It's not the same account as Genesis/Labs or R.E.A.CH.
 - **Deploying it** (signed in to that account, kept separate from other logins): `cd booking && XDG_CONFIG_HOME="$HOME/.config/cdcs-cloudflare" npx wrangler pages deploy --project-name cdcs-booking --branch main`, then `npx wrangler deploy --config retry-worker/wrangler.toml`.
 - **The domain's DNS** (cdcscontracts.com) is on Cloudflare; **e-mail** (Zoho) is on the root domain.
 - **Database changes:** back up first (`npx wrangler d1 export cdcs-booking-db --remote --output <file>`), then `npx wrangler d1 migrations apply cdcs-booking-db --remote`. The migration tracker has been up to date since 17 Oct 2026 (0001–0003).

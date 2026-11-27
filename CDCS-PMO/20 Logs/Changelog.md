@@ -1,6 +1,6 @@
 ---
 title: Changelog
-updated: 2026-10-17
+updated: 2026-11-27
 ---
 
 # 📜 Changelog
@@ -10,7 +10,18 @@ updated: 2026-10-17
 > **How to read:** tap a date to open it. Only the newest is open.
 > **Back to:** [[00 Dashboard]]
 
-> [!success]+ 🚀 17 Oct 2026 · Invoice and card payment (test mode) · live
+> [!success]+ 🧹 26 Nov 2026 · Private details removed, README added · merged
+> - **What changed:** ten files carried a real mobile number, in WhatsApp links and set-up examples. Each now uses a test number.
+> - **Also:** the Cloudflare account name is out of [[How it fits together]], and the repo has a README.
+> - **Not changed:** the published landing page.
+> - **Still true:** old commits hold the number. Only a fresh copy of the repo, or making it private, removes it.
+> - **Released:** pull requests #7 (`5ccca58`) and #8.
+
+> [!success]- 🚀 17 Nov 2026 · Demo page: no real background or named past jobs · merged
+> - **What changed:** the landing page no longer shows a real background or named past jobs.
+> - **Released:** pull request #6 (`551534b`).
+
+> [!success]- 🚀 17 Oct 2026 · Invoice and card payment (test mode) · live
 > - **What changed:** each booking gets a private invoice link. It shows labour at the demo rate, minus 20% CIS, with a Pay button that opens Stripe Checkout.
 > - **Test mode only:** Stripe's test card 4242 pays; no real money moves.
 > - **Database:** backed up, then migration 0003 added the payment columns.
